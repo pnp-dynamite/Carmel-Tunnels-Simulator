@@ -9,7 +9,7 @@
 using namespace std;
 
 unsigned Route::len = 10;				// Static Initialization.	
-unsigned Route::routes_counter = 0;
+unsigned Route::routes_counter = 1;
 
 
 // Constructor

@@ -6,6 +6,8 @@ using namespace std;
 
 int main()
 {
-	Route aa;
+
+	Route RR;
+	PayRoutes PP;
 	return 0;
 }

@@ -34,17 +34,14 @@ Car::Car(const Car& C)
 // Generate random model name
 basic_string<char> Car::Model_Generator()
 {
-	time_t t;
-	srand((unsigned)time(&t));
-	basic_string<char> Model_List[10] = { "Honda", "Mazda", "Toyota", "Suzuki", "Peugeot", "Kia", "Volvo", "Opel", "BMW", "FIAT" };
+	basic_string<char> Model_List[10] = { "Honda", "Mazda", "Toyota", "Suzuki", "Peugeot",
+														"Kia", "Volvo", "Opel", "BMW", "FIAT" };
 	return Model_List[rand() % 10];
 }
 
 // Generate random 8Digits ID number
 unsigned Car::ID_Generator()
 {
-	time_t t;
-	srand((unsigned) time(&t));
 	return (double)rand() / (RAND_MAX + 1) * (99999999 - 10000000) + 10000000;
 }
 
@@ -69,4 +66,11 @@ void Car::set_Arrival_time(int AT)
 void Car::set_exit_time(int ET)
 {
 	Exit_time = ET;
+}
+int Car::random_num(int low, int high)
+{
+	int num;
+	/* generate secret number between low and high: */
+	num = rand() % (high - low + 1) + low;
+	return num;
 }

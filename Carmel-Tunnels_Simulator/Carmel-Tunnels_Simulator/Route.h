@@ -20,12 +20,14 @@ private:
 	static unsigned size_cansuime;
 	// Globle Routes counter
 	static unsigned routes_counter; 
-
+	unsigned CountDowntimer = 0; // ma6be public
 	Car *m_queue;
 	const unsigned m_service_time;
 	int Route_Num;
 
 public:
+	bool empty_queue;
+	bool full_queue;
 	static unsigned len, counter;
 	// Constructor
 	Route();

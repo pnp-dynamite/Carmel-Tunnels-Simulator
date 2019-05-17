@@ -19,11 +19,13 @@ private:
 
 	basic_string<char> Model;
 	unsigned ID;
-	unsigned Arrival_time = 0; //TBD- maybe should be public.
-	unsigned Exit_time = 0; //TBD- maybe should be public.
+	
 
 
 public:
+	unsigned Arrival_time = 0; 
+	unsigned Exit_time = 0; 
+
 	// Constructor
 	Car(unsigned AT = 0);
 	//	Destructor 
@@ -43,4 +45,6 @@ public:
 	void Car::set_Arrival_time(int AT);
 	void Car::set_exit_time(int ET);
 
+
+	int Car::random_num(int low, int high);
 };
