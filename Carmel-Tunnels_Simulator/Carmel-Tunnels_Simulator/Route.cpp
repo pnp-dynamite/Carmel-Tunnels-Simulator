@@ -2,6 +2,7 @@
 #include <iostream>
 #include <ctime>
 #include "Route.h"
+
 #pragma once///
 
 
@@ -9,14 +10,28 @@ using namespace std;
 
 unsigned Route::len = 10;				// Static Initialization.	
 unsigned Route::route_counter = 1;
+static unsigned len;
 
+// Constructor
+Route::Route()
+{
 
-Route::Route() :m_service_time()
+}
+//	Destructor 
+~Route::Route()
+{
+
+}
+//Copy Constructor
+Route::Route(const Route&)
 {
 
 }
 
+const int Route::Route_Last_INX()
+{
 
+}
 
 int random_num(int low, int high)
 {
