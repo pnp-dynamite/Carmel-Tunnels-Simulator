@@ -1,24 +1,24 @@
 #include <cstdlib>
 #include <iostream>
 #include <ctime>
-#include "Route.h"
+#include <string>
 
 #pragma once///
-
-
 using namespace std;
 
 unsigned Route::len = 10;				// Static Initialization.	
-unsigned Route::route_counter = 1;
-static unsigned len;
+unsigned Route::routes_counter = 1;
+
 
 // Constructor
-Route::Route()
+Route::Route(): m_service_time()
 {
-
+	m_queue = new Car[len];
+	Route_Num = routes_counter;
+	routes_counter++;
 }
 //	Destructor 
-~Route::Route()
+Route::~Route()
 {
 
 }

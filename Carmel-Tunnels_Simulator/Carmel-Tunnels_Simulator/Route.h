@@ -1,22 +1,26 @@
 #include <cstdlib>
 #include <iostream>
 #include <ctime>
-#include "Car.h"
+#include <string>
+
 #include "PayRoutes.h"
+#include "Car.h" 
 
 
+using namespace std;
 #pragma once/////
 
 
-class Route
-{
+class Route {
 private:
+	static unsigned size_cansuime;
 	// Globle Routes counter
 	static unsigned routes_counter; 
 
-	int* m_queue;
+	Car *m_queue;
 	const unsigned m_service_time;
 	int Route_Num;
+
 public:
 	static unsigned len, counter;
 	// Constructor

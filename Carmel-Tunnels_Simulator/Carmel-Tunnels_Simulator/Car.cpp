@@ -1,16 +1,17 @@
-#pragma once
-
-#include "Car.h"
 #include <iostream>
 #include <crtdbg.h>
 #include <ctime>
 #include <cstdlib>
 
+#include "Car.h"
+
+#pragma once
 using namespace std;
 
 // Constructor
 Car::Car()
 {
+	
 	Model = this->Model_Generator();
 	ID = this->ID_Generator();
 }
@@ -54,4 +55,14 @@ const basic_string<char> Car::get_Car_Model()
 const int Car::get_Car_AT()
 {
 	return Arrival_time;
+}
+
+
+void Car::set_Arrival_time(int AT)
+{
+	Arrival_time = AT;
+}
+void Car::set_exit_time(int ET)
+{
+	Exit_time = ET;
 }

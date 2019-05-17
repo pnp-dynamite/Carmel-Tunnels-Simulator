@@ -1,10 +1,12 @@
-#pragma once
-
-#include <string>
+#include <cstdlib>
 #include <iostream>
+#include <ctime>
+#include <string>
+
 #include "PayRoutes.h"
 #include "Route.h"
 
+#pragma once
 using namespace std;
 
 #ifdef _DEBUG
@@ -16,9 +18,12 @@ using namespace std;
 
 class Car {
 private:
+
 	basic_string<char> Model;
 	unsigned ID;
-	unsigned Arrival_time; //TBD- maybe should be public.
+	unsigned Arrival_time = 0; //TBD- maybe should be public.
+	unsigned Exit_time = 0; //TBD- maybe should be public.
+
 
 public:
 	// Constructor
@@ -35,5 +40,8 @@ public:
 
 	const int Car::get_Car_ID();
 	const basic_string<char> Car::get_Car_Model();
-	const int Car::get_Car_AT() //AT - Arrival Time
+	const int Car::get_Car_AT(); //AT - Arrival Time
+
+	void Car::set_Arrival_time(int AT);
+	void Car::set_exit_time(int ET);
 };
