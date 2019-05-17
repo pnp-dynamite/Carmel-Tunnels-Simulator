@@ -11,12 +11,12 @@
 class Route
 {
 private:
+	// Globle Routes counter
+	static unsigned routes_counter; 
 
-	static unsigned route_counter;
-	int*m_queue;
+	int* m_queue;
 	const unsigned m_service_time;
-	Car m_queue[];					// Array of Cars in the lenght of the route.
-
+	int Route_Num;
 public:
 	static unsigned len, counter;
 	// Constructor
