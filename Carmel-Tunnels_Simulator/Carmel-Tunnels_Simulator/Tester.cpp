@@ -7,4 +7,5 @@ using namespace std;
 int main()
 {
 	Route aa;
+	return 0;
 }

@@ -3,13 +3,17 @@
 #include <ctime>
 #include <string>
 
-#include "PayRoutes.h"
-#include "Car.h" 
-
+#include "Car.h"
 
 using namespace std;
 #pragma once/////
 
+#ifdef _DEBUG
+#ifndef DBG_NEW
+#define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )
+#define new DBG_NEW
+#endif
+#endif // _DEBUG
 
 class Route {
 private:
@@ -28,7 +32,7 @@ public:
 	//	Destructor 
 	~Route();
 	//Copy Constructor
-	Route(const Route&);
+	//Route(const Route& R);
 
 	//Get the index of the last car in the route
 	const int Route::Route_Last_INX();

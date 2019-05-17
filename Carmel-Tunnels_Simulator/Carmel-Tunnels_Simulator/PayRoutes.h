@@ -1,9 +1,7 @@
-#include <cstdlib>
 #include <iostream>
 #include <ctime>
 #include <string>
 
-#include "Car.h"
 #include "Route.h"
 
 #pragma once
@@ -21,7 +19,7 @@ private:
 	const unsigned m_num_routes;
 	// between 1 to 4: 1.shortest 2.longestv 3.fastest 4.random
 	const unsigned algorithm;
-	Routes EnterRoutesArray[m_num_routes];
+	Route *Routes_array;
 
 
 public:
@@ -30,6 +28,6 @@ public:
 	//	Destructor 
 	~PayRoutes();
 	//Copy Constructor
-	PayRoutes(const PayRoutes&);
+	//PayRoutes(const PayRoutes& P);
 
 };

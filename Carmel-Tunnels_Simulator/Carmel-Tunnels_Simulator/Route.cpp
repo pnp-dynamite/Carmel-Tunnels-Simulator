@@ -3,6 +3,8 @@
 #include <ctime>
 #include <string>
 
+#include "Route.h"
+
 #pragma once///
 using namespace std;
 
@@ -17,21 +19,21 @@ Route::Route(): m_service_time()
 	Route_Num = routes_counter;
 	routes_counter++;
 }
-//	Destructor 
+////	Destructor 
 Route::~Route()
 {
-
+	delete[] m_queue;
 }
-//Copy Constructor
-Route::Route(const Route&)
-{
-
-}
-
-const int Route::Route_Last_INX()
-{
-
-}
+////Copy Constructor
+//Route::Route(const Route& R)
+//{
+//
+//}
+//
+//const int Route::Route_Last_INX()
+//{
+//
+//}
 
 int random_num(int low, int high)
 {
@@ -44,10 +46,3 @@ int random_num(int low, int high)
 }
 
 
-int main()
-{
-	int x = 0;
-	cout << x << endl;
-	x = random_num(10000000, 99999999);
-	cout << x << endl;
-}

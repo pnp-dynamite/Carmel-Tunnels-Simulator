@@ -3,8 +3,6 @@
 #include <ctime>
 #include <string>
 
-#include "PayRoutes.h"
-#include "Route.h"
 
 #pragma once
 using namespace std;
@@ -27,11 +25,11 @@ private:
 
 public:
 	// Constructor
-	Car();
+	Car(unsigned AT = 0);
 	//	Destructor 
-	~Car();
+	//~Car();
 	//Copy Constructor
-	Car(const Car&);
+	Car(const Car& A);
 
 	// Generate random model name
 	basic_string<char> Model_Generator();
@@ -44,4 +42,5 @@ public:
 
 	void Car::set_Arrival_time(int AT);
 	void Car::set_exit_time(int ET);
+
 };

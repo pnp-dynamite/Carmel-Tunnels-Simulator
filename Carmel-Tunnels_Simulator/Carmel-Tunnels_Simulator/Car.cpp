@@ -9,30 +9,33 @@
 using namespace std;
 
 // Constructor
-Car::Car()
+Car::Car(unsigned AT)
 {
-	
+	Arrival_time = AT;
 	Model = this->Model_Generator();
 	ID = this->ID_Generator();
 }
 
-//	Destructor 
-Car::~Car()
+////	Destructor 
+//Car::~Car()
+//{
+//
+//
+//}
+////Copy Constructor
+Car::Car(const Car& C)
 {
-
-
-}
-//Copy Constructor
-Car::Car(const Car&)
-{
-
+	Model = C.Model;
+	ID = C.ID;
+	Arrival_time = C.Arrival_time;
 
 }
 
 // Generate random model name
 basic_string<char> Car::Model_Generator()
 {
-	srand(time(NULL));
+	time_t t;
+	srand((unsigned)time(&t));
 	basic_string<char> Model_List[10] = { "Honda", "Mazda", "Toyota", "Suzuki", "Peugeot", "Kia", "Volvo", "Opel", "BMW", "FIAT" };
 	return Model_List[rand() % 10];
 }
@@ -40,7 +43,8 @@ basic_string<char> Car::Model_Generator()
 // Generate random 8Digits ID number
 unsigned Car::ID_Generator()
 {
-	srand(time(NULL));
+	time_t t;
+	srand((unsigned) time(&t));
 	return (double)rand() / (RAND_MAX + 1) * (99999999 - 10000000) + 10000000;
 }
 
