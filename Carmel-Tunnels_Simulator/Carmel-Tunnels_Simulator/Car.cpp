@@ -42,3 +42,16 @@ unsigned Car::ID_Generator()
 	srand(time(NULL));
 	return (double)rand() / (RAND_MAX + 1) * (99999999 - 10000000) + 10000000;
 }
+
+const int Car::get_Car_ID()
+{
+	return ID;
+}
+const basic_string<char> Car::get_Car_Model()
+{
+	return Model;
+}
+const int Car::get_Car_AT()
+{
+	return Arrival_time;
+}
