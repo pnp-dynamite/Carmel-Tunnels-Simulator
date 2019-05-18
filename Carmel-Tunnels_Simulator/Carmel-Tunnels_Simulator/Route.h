@@ -20,7 +20,6 @@ private:
 	static unsigned size_cansuime;
 	// Globle Routes counter
 	static unsigned routes_counter; 
-	unsigned CountDowntimer = 0; // ma6be public
 	Car *m_queue;
 	const unsigned m_service_time;
 	int Route_Num;
@@ -41,10 +40,12 @@ public:
 
 	int Route::random_num(int low, int high);
 
-	/*push_back;
-	pop;
-	top;
-	size;*/
+	//push_back;
+	//pop;
+	int top();
+	//size;
+
+	bool Route::CountDowntimer(unsigned time);
 
 };
 
