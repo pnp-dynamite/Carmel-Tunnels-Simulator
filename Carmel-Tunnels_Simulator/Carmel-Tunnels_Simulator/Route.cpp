@@ -35,10 +35,15 @@ Route::~Route()
 	delete[] m_queue;
 }
 ////Copy Constructor
-//Route::Route(const Route& RR)
-//{
-//
-//}
+Route::Route(const Route& RR)
+{
+	m_queue = new Car[len];
+	for (int i = 0; i < len - m_empty_slots; i++)
+	{
+		m_queue[i].Assign(RR.m_queue[i]);
+	}
+	
+}
 
 Car Route::top()
 {
@@ -58,6 +63,9 @@ unsigned Route::pop(unsigned pop_inx) //return the remaing free slots
 unsigned Route::push_back(Car& CC,unsigned push_inx)
 {
 	m_queue[push_inx].Assign(CC);
+	if(full_queue != true)
+		queue_advance(push_inx);
+
 	//m_last_queue_inx--;
 	m_empty_slots--;
 	empty_check();
