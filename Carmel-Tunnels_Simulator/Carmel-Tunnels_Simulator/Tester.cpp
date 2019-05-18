@@ -9,8 +9,10 @@ int main()
 
 	Route RR;
 	RR.pop(0);
+	Car CC(2, 4);
+	RR.push_back(CC, 0);
 
-
+		
 	PayRoutes PP;
 	return 0;
 }
