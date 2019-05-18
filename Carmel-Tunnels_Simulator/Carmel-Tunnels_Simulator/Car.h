@@ -26,14 +26,13 @@ public:
 	unsigned Arrival_time = 0; 
 	unsigned Exit_time = 0; 
 
-	// Defualt Constructor
-	Car::Car();
 	// Constructor For spacific car
-	Car(basic_string<char> car_model = "",unsigned car_id = 0, unsigned AT = 0);
+	Car(basic_string<char> car_model = "",unsigned car_id = 0, unsigned AT = 0, unsigned ET = 0);
 	// Constructor For random car
-	Car::Car(unsigned AT);
+	Car::Car(unsigned AT, unsigned ET);
+
 	//	Destructor 
-	//~Car();
+	~Car();
 	//Copy Constructor
 	Car(const Car& A);
 

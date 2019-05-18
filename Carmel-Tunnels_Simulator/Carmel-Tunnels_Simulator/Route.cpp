@@ -18,15 +18,15 @@ Route::Route(): m_service_time(random_num(5, 20))
 	
 	m_queue = new Car[len];
 
-	for (int inx = 0; inx < len; inx++)
-	{
-		m_queue[inx].set_Arrival_time(inx * m_service_time);
-		m_queue[inx].set_exit_time((inx+1) * m_service_time);
-	} 
-	m_top_queue_inx = 0;
+	//for (int inx = 0; inx < len; inx++)
+	//{
+	//	m_queue[inx].set_Arrival_time(inx * m_service_time);
+	//	m_queue[inx].set_exit_time((inx + 1) * m_service_time);
+	//}
 
 	m_Route_Num = routes_counter;
 	routes_counter++;
+
 }
 
 ////	Destructor 
@@ -42,26 +42,31 @@ Route::~Route()
 //
 unsigned Route::top()
 {
-	return m_top_queue_inx;
+	return 1;
 }
-void Route::pop(int inx)
+void Route::pop(int pop_inx)
 {  
 	//תיעוד בקובץ פרטי המכונית היוצאת
-	this->m_queue[inx].car_delete();
-	m_top_queue_inx = inx--;
+	queue_advance(m_last_queue_inx);
+	m_queue[m_last_queue_inx].car_delete();
+	m_last_queue_inx--;
 	m_empty_slots++;
+	full_queue = (m_empty_slots < len ? false : true);
 
-
-
-	m_top_queue_inx--;
-	m_empty_slots++;
-	if (m_top_queue_inx < 0)
-		this->empty_queue = true;
 }
 //const int Route::Route_Last_INX()
 //{
 //
 //}
+
+void Route::queue_advance(unsigned last_inx)
+{
+	for (int i = 0; i < last_inx; i++)
+	{
+		this->m_queue[i].Assign(this->m_queue[i + 1]);
+	}
+}
+
 
 int Route::random_num(int low, int high)
 {

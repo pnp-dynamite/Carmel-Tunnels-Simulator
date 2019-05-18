@@ -22,9 +22,8 @@ private:
 	Car *m_queue;
 	const unsigned m_service_time;
 	int m_Route_Num;
-	unsigned  m_top_queue_inx;
-	int m_empty_slots = -1;
-
+	int m_empty_slots = 0;
+	int m_last_queue_inx = len-1;
 public:
 	bool empty_queue;
 	bool full_queue;
@@ -42,7 +41,8 @@ public:
 	int Route::random_num(int low, int high);
 
 	//push_back;
-	void Route::pop(int inx);
+	void Route::pop(int pop_inx);
+	void Route::queue_advance(unsigned last_inx); 
 	unsigned top();
 	//size;
 

@@ -9,33 +9,28 @@
 using namespace std;
 
 
-//Defualt Constructor
-Car::Car()
-{
-	Model = "";
-	ID = 0;
-	Arrival_time = 0;
-	Exit_time = 0;
-}
 // Constructor For spacific car
-Car::Car(basic_string<char> car_model, unsigned car_id, unsigned AT)
+Car::Car(basic_string<char> car_model, unsigned car_id, unsigned AT, unsigned ET)
 {
 	Arrival_time = AT;
+	Exit_time = ET;
 	Model = car_model;
 	ID = car_id;
 }
-// Constructor For random car
-Car::Car(unsigned AT)
+//// Constructor For random car
+Car::Car(unsigned AT, unsigned ET)
 {
 	Arrival_time = AT;
+	Exit_time = ET;
 	Model = this->Model_Generator();
 	ID = this->ID_Generator();
 }
 
+
 ////	Destructor 
 Car::~Car()
 {
-	ID = 0;
+	
 }
 ////Copy Constructor
 Car::Car(const Car& C)
@@ -49,6 +44,8 @@ void Car::car_delete()
 {
 	ID = 0;
 	Model = "\0";
+	Exit_time = 0;
+	Arrival_time = 0;
 }
 // Generate random model name
 basic_string<char> Car::Model_Generator()
@@ -92,6 +89,7 @@ Car Car::Assign(Car& CC) //TBD change to operator overload =
 	ID = CC.ID;
 	Arrival_time = CC.Arrival_time;
 	Exit_time = CC.Exit_time;
+	return *this;
 }
 
 int Car::random_num(int low, int high)
