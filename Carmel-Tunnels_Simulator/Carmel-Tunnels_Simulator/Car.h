@@ -26,8 +26,12 @@ public:
 	unsigned Arrival_time = 0; 
 	unsigned Exit_time = 0; 
 
-	// Constructor
-	Car(unsigned AT = 0);
+	// Defualt Constructor
+	Car::Car();
+	// Constructor For spacific car
+	Car(basic_string<char> car_model = "",unsigned car_id = 0, unsigned AT = 0);
+	// Constructor For random car
+	Car::Car(unsigned AT);
 	//	Destructor 
 	//~Car();
 	//Copy Constructor
@@ -44,7 +48,8 @@ public:
 
 	void Car::set_Arrival_time(int AT);
 	void Car::set_exit_time(int ET);
-
+	void Car::car_delete();
+	Car Car::Assign(Car& CC);
 
 	int Car::random_num(int low, int high);
 };

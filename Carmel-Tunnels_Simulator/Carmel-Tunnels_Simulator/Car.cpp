@@ -8,7 +8,23 @@
 #pragma once
 using namespace std;
 
-// Constructor
+
+//Defualt Constructor
+Car::Car()
+{
+	Model = "";
+	ID = 0;
+	Arrival_time = 0;
+	Exit_time = 0;
+}
+// Constructor For spacific car
+Car::Car(basic_string<char> car_model, unsigned car_id, unsigned AT)
+{
+	Arrival_time = AT;
+	Model = car_model;
+	ID = car_id;
+}
+// Constructor For random car
 Car::Car(unsigned AT)
 {
 	Arrival_time = AT;
@@ -17,11 +33,10 @@ Car::Car(unsigned AT)
 }
 
 ////	Destructor 
-//Car::~Car()
-//{
-//
-//
-//}
+Car::~Car()
+{
+	ID = 0;
+}
 ////Copy Constructor
 Car::Car(const Car& C)
 {
@@ -30,7 +45,11 @@ Car::Car(const Car& C)
 	Arrival_time = C.Arrival_time;
 
 }
-
+void Car::car_delete()
+{
+	ID = 0;
+	Model = "\0";
+}
 // Generate random model name
 basic_string<char> Car::Model_Generator()
 {
@@ -67,6 +86,14 @@ void Car::set_exit_time(int ET)
 {
 	Exit_time = ET;
 }
+Car Car::Assign(Car& CC) //TBD change to operator overload =
+{
+	Model = CC.Model;
+	ID = CC.ID;
+	Arrival_time = CC.Arrival_time;
+	Exit_time = CC.Exit_time;
+}
+
 int Car::random_num(int low, int high)
 {
 	int num;

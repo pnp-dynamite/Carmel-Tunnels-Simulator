@@ -20,16 +20,15 @@ Route::Route(): m_service_time(random_num(5, 20))
 
 	for (int inx = 0; inx < len; inx++)
 	{
-		m_queue[inx].set_Arrival_time((len-1) * m_service_time);
-		m_queue[inx].set_exit_time(len * m_service_time);
+		m_queue[inx].set_Arrival_time(inx * m_service_time);
+		m_queue[inx].set_exit_time((inx+1) * m_service_time);
 	} 
-	while(CountDowntimer(m_service_time) == m_queue[top()].Exit_time)
-	{
+	m_top_queue_inx = 0;
 
-	}
-	Route_Num = routes_counter;
+	m_Route_Num = routes_counter;
 	routes_counter++;
 }
+
 ////	Destructor 
 Route::~Route()
 {
@@ -41,6 +40,24 @@ Route::~Route()
 //
 //}
 //
+unsigned Route::top()
+{
+	return m_top_queue_inx;
+}
+void Route::pop(int inx)
+{  
+	//תיעוד בקובץ פרטי המכונית היוצאת
+	this->m_queue[inx].car_delete();
+	m_top_queue_inx = inx--;
+	m_empty_slots++;
+
+
+
+	m_top_queue_inx--;
+	m_empty_slots++;
+	if (m_top_queue_inx < 0)
+		this->empty_queue = true;
+}
 //const int Route::Route_Last_INX()
 //{
 //
@@ -53,9 +70,5 @@ int Route::random_num(int low, int high)
 	num = rand() % (high - low + 1) + low;
 	return num;
 }
-bool Route::CountDowntimer(unsigned time)
-{
-	for (int i = 0; i <= time; i++)
-		return true;
-}
+
 

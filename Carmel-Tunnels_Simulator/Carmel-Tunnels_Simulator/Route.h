@@ -17,12 +17,13 @@ using namespace std;
 
 class Route {
 private:
-	static unsigned size_cansuime;
 	// Globle Routes counter
 	static unsigned routes_counter; 
 	Car *m_queue;
 	const unsigned m_service_time;
-	int Route_Num;
+	int m_Route_Num;
+	unsigned  m_top_queue_inx;
+	int m_empty_slots = -1;
 
 public:
 	bool empty_queue;
@@ -41,11 +42,10 @@ public:
 	int Route::random_num(int low, int high);
 
 	//push_back;
-	//pop;
-	int top();
+	void Route::pop(int inx);
+	unsigned top();
 	//size;
 
-	bool Route::CountDowntimer(unsigned time);
 
 };
 
