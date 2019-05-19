@@ -37,9 +37,9 @@ public:
 	Car(const Car& A);
 
 	// Generate random model name
-	basic_string<char> Model_Generator();
+	basic_string<char> Car::Model_Generator();
 	// Generate random 8digits ID number
-	unsigned ID_Generator();
+	unsigned Car::ID_Generator();
 
 	const int Car::get_Car_ID();
 	const basic_string<char> Car::get_Car_Model();
