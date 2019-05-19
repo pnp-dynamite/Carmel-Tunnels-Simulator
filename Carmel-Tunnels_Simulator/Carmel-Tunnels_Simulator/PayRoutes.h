@@ -32,7 +32,15 @@ public:
 	~PayRoutes();
 	//Copy Constructor
 	//PayRoutes(const PayRoutes& P);
+
 	void PayRoutes::algoritem_bank(unsigned selection);
 	int PayRoutes::random_number(int low, int high);
-	Car PayRoutes::m_Car_Generator_time();
+	Car PayRoutes::Car_Generator(unsigned create_time, unsigned service_time);
+
+	unsigned PayRoutes::shortest_algo(Car Ccar);
+	unsigned PayRoutes::longest_algo(Car Ccar);
+	unsigned PayRoutes::fastest_algo(Car Ccar);
+	unsigned PayRoutes::random_algo(Car Ccar);
+
+
 };
