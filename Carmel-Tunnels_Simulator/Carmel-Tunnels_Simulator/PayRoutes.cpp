@@ -29,7 +29,7 @@ PayRoutes::~PayRoutes()
 //
 //
 //}
-void PayRoutes::algoritem_bank(unsigned selection)
+void PayRoutes::algoritem_selector(unsigned selection)
 {
 	while (selection > 4 || selection < 1)
 		cout << "Invalid algoritem selection! Please enter num between 1 ti 4" << endl;
@@ -42,6 +42,8 @@ void PayRoutes::algoritem_bank(unsigned selection)
 
 	case 3:
 
+
+
 	case 4:
 
 	default:
@@ -50,37 +52,54 @@ void PayRoutes::algoritem_bank(unsigned selection)
 }
 
 
-unsigned PayRoutes::shortest_algo(Car Ccar)
+int PayRoutes::shortest_algo()
 {
 	unsigned route_lowest_queue = 0;
-	unsigned working_inx = 0;
+	
+	// working_inx is the inx with the smallest queue and not full, 
+	// all full queue will set to -1 = leaving CAR
+	int working_inx = 0; 
 	// Check who has the smallest size of cars in the queue.
 	route_lowest_queue = m_Routes_array[0].size();
 	for (int i = 1; i <= m_num_routes; i++)
 	{
-		if (m_Routes_array[i].size() > route_lowest_queue)
+		if (m_Routes_array[i].size() < route_lowest_queue && m_Routes_array[i].full_check = false)
 		{
 			route_lowest_queue = m_Routes_array[i].size();
 			working_inx = i;
 		}
+	}
+	return	working_inx;
 
 	}
-		
-	
-	
-}
-//unsigned PayRoutes::longest_algo(Car Ccar);
-//unsigned PayRoutes::fastest_algo(Car Ccar);
-//unsigned PayRoutes::random_algo(Car Ccar);
+ int PayRoutes::longest_algo()
+{
+	 unsigned route_longest_queue = 0;
 
+	 // working_inx is the inx with the longest queue and not full, 
+	 // all full queue will set to -1 = leaving CAR
+	 int working_inx = 0;
+	 // Check who has the smallest size of cars in the queue.
+	 route_longest_queue = m_Routes_array[0].size();
+	 for (int i = 1; i <= m_num_routes; i++)
+	 {
+		 if (m_Routes_array[i].size() > route_longest_queue && m_Routes_array[i].full_check = false)
+		 {
+			 route_longest_queue = m_Routes_array[i].size();
+			 working_inx = i;
+		 }
+	 }
+	 return	working_inx;
 
+ }
+ int PayRoutes::fastest_algo()
+ {
+	 
+ }
+ int PayRoutes::random_algo()
+ {
 
-
-
-
-
-
-
+ }
 
 
 
@@ -92,4 +111,9 @@ int PayRoutes::random_number(int low, int high)
 	num = rand() % (high - low + 1) + low;
 	return num;
 }
+
+
+
+
+
 

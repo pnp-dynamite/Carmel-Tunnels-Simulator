@@ -33,14 +33,17 @@ public:
 	//Copy Constructor
 	//PayRoutes(const PayRoutes& P);
 
-	void PayRoutes::algoritem_bank(unsigned selection);
+	void PayRoutes::algoritem_selector(unsigned selection);
 	int PayRoutes::random_number(int low, int high);
 	
+	
 
-	unsigned PayRoutes::shortest_algo(Car Ccar);
-	unsigned PayRoutes::longest_algo(Car Ccar);
-	unsigned PayRoutes::fastest_algo(Car Ccar);
-	unsigned PayRoutes::random_algo(Car Ccar);
+	//int PayRoutes::routes_checker(int num_of_routes, int algoritem);
+	// כדי להפוך לפונקציה אחת כוללת
+	int PayRoutes::shortest_algo();
+	int PayRoutes::longest_algo();
+	int PayRoutes::fastest_algo();
+	int PayRoutes::random_algo();
 
 
 };
