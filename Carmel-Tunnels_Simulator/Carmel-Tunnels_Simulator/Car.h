@@ -41,14 +41,18 @@ public:
 	// Generate random 8digits ID number
 	unsigned Car::ID_Generator();
 
+	// Getters
 	const int Car::get_Car_ID();
 	const basic_string<char> Car::get_Car_Model();
 	const int Car::get_Car_AT(); //AT - Arrival Time
+	const int Car::get_Car_ET(); //ET - Exit Time
 
-	void Car::set_Arrival_time(int AT);
-	void Car::set_exit_time(int ET);
+	Car Car::Car_Generator(unsigned current_time, unsigned service_time);
+	//void Car::set_Arrival_time(int AT);
+	//void Car::set_exit_time(int ET);
 	void Car::car_delete();
 	Car Car::Assign(Car& CC);
+	bool Car::car_validation(Car& CCar);
 
 	int Car::random_num(int low, int high);
 };

@@ -17,23 +17,27 @@ using namespace std;
 
 class Route {
 private:
-	// Globle Routes counter
-	static unsigned routes_counter; 
 	Car *m_queue;
 	const unsigned m_service_time;
-	int m_Route_Num;
+	int m_Route_Num=0;
 	int m_empty_slots = len;
-	//int m_last_queue_inx = len-1;
+
 public:
-	bool empty_queue;
-	bool full_queue;
-	static unsigned len, counter;
+	// Globle Routes counter
+	static unsigned routes_counter;
+	static unsigned len;
+
+	bool empty_queue = true;
+	bool full_queue = false;
+
+
+	//static unsigned len, counter;
 	// Constructor
 	Route();
 	//	Destructor 
 	~Route();
 	//Copy Constructor
-	//Route(const Route& RR);
+	Route(const Route& RR);
 
 	void Route::full_check();
 	void Route::empty_check();

@@ -40,6 +40,12 @@ Car::Car(const Car& C)
 	Arrival_time = C.Arrival_time;
 
 }
+Car Car::Car_Generator(unsigned current_time, unsigned service_time)
+{
+	Car CCar(current_time, current_time + service_time);
+	return CCar;
+}
+
 void Car::car_delete()
 {
 	ID = 0;
@@ -73,16 +79,20 @@ const int Car::get_Car_AT()
 {
 	return Arrival_time;
 }
+const int Car::get_Car_ET()
+{
+	return Exit_time;
+}
 
 
-void Car::set_Arrival_time(int AT)
-{
-	Arrival_time = AT;
-}
-void Car::set_exit_time(int ET)
-{
-	Exit_time = ET;
-}
+//void Car::set_Arrival_time(int AT)
+//{
+//	Arrival_time = AT;
+//}
+//void Car::set_exit_time(int ET)
+//{
+//	Exit_time = ET;
+//}
 Car Car::Assign(Car& CC) //TBD change to operator overload =
 {
 	Model = CC.Model;
@@ -91,7 +101,10 @@ Car Car::Assign(Car& CC) //TBD change to operator overload =
 	Exit_time = CC.Exit_time;
 	return *this;
 }
-
+bool Car::car_validation(Car& CCar)
+{
+	return CCar.ID != 0 ? true : false;
+}
 int Car::random_num(int low, int high)
 {
 	int num;

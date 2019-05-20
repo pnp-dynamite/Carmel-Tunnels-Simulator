@@ -8,11 +8,11 @@ int main()
 {
 
 	Route RR;
-	RR.pop(0);
-	Car CC(2, 4);
-	RR.push_back(CC, 0);
+	//RR.pop(0);
+	//Car CC(2, 4);
+	//RR.push_back(CC, 0);
 
 		
-	PayRoutes PP;
+	PayRoutes PP(5, 5, 1);
 	return 0;
 }

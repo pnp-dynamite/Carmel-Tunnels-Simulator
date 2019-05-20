@@ -9,8 +9,8 @@
 using namespace std;
 
  //Constructor
-PayRoutes::PayRoutes(unsigned P_time, unsigned route_num, unsigned algoritem) 
-	: m_num_routes(route_num), m_algorithm(algoritem)
+PayRoutes::PayRoutes(unsigned P_time, unsigned number_of_routes, unsigned algoritem) 
+	: m_num_routes(number_of_routes), m_algorithm(algoritem)
 {
 	m_Routes_array = new Route[m_num_routes];
 	m_Simulator_time = P_time;
@@ -49,18 +49,15 @@ void PayRoutes::algoritem_bank(unsigned selection)
 	}
 }
 
-Car PayRoutes::Car_Generator(unsigned create_time, unsigned service_time)
-{
-	Car CCar(create_time, create_time + service_time);
-	return CCar;
-}
 
 unsigned PayRoutes::shortest_algo(Car Ccar)
 {
 	for (int i = 0; i <= m_num_routes; i++)
 	{
-
+		 // Check who has the smallest size of cars in the queue.
+		m_Routes_array[i].size();
 	}
+	return 1;
 }
 //unsigned PayRoutes::longest_algo(Car Ccar);
 //unsigned PayRoutes::fastest_algo(Car Ccar);

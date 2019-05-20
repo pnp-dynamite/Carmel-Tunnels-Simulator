@@ -27,7 +27,7 @@ private:
 
 public:
 	// Constructor
-	PayRoutes(unsigned P_time = 60, unsigned route_num = 1, unsigned algoritem = 1);
+	PayRoutes(unsigned P_time = 60, unsigned number_of_routes = 1, unsigned algoritem = 1);
 	//	Destructor 
 	~PayRoutes();
 	//Copy Constructor
@@ -35,7 +35,7 @@ public:
 
 	void PayRoutes::algoritem_bank(unsigned selection);
 	int PayRoutes::random_number(int low, int high);
-	Car PayRoutes::Car_Generator(unsigned create_time, unsigned service_time);
+	
 
 	unsigned PayRoutes::shortest_algo(Car Ccar);
 	unsigned PayRoutes::longest_algo(Car Ccar);
