@@ -30,3 +30,4 @@ public:
 	~Simulator();
 	//Copy Constructor
 	//Simulator(const Simulator& P);
+};

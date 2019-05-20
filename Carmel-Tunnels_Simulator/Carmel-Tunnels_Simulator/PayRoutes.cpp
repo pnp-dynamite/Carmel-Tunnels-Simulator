@@ -41,7 +41,7 @@ int PayRoutes::algoritem_selector(int selection)
 	case 3:
 		return fastest_algo();
 	case 4:
-		return 
+		return random_queue_algo();
 	default:
 		break;
 	}
@@ -59,7 +59,8 @@ int PayRoutes::shortest_algo()
 	route_lowest_queue = m_Routes_array[0].size();
 	for (int i = 1; i <= m_num_routes; i++)
 	{
-		if (m_Routes_array[i].size() < route_lowest_queue && m_Routes_array[i].full_check = false)
+		if (m_Routes_array[i].size() < route_lowest_queue 
+									&& m_Routes_array[i].full_queue == false)
 		{
 			route_lowest_queue = m_Routes_array[i].size();
 			working_inx = i;
@@ -79,7 +80,8 @@ int PayRoutes::shortest_algo()
 	 route_longest_queue = m_Routes_array[0].size();
 	 for (int i = 1; i <= m_num_routes; i++)
 	 {
-		 if (m_Routes_array[i].size() > route_longest_queue && m_Routes_array[i].full_check = false)
+		 if (m_Routes_array[i].size() > route_longest_queue 
+								&& m_Routes_array[i].full_queue == false)
 		 {
 			 route_longest_queue = m_Routes_array[i].size();
 			 working_inx = i;
@@ -87,6 +89,7 @@ int PayRoutes::shortest_algo()
 	 }
 	 return	working_inx;
  }
+
  int PayRoutes::fastest_algo()
  {
 	 unsigned route_fastest_queue = 0;
@@ -98,7 +101,7 @@ int PayRoutes::shortest_algo()
 	 route_fastest_queue = m_Routes_array[0].m_service_time;
 	 for (int i = 1; i <= m_num_routes; i++)
 	 {
-		 if (m_Routes_array[i].size() > route_fastest_queue && m_Routes_array[i].full_check = false)
+		 if (m_Routes_array[i].size() > route_fastest_queue && m_Routes_array[i].full_queue == false)
 		 {
 			 route_fastest_queue = m_Routes_array[i].m_service_time;
 			 working_inx = i;
@@ -106,29 +109,16 @@ int PayRoutes::shortest_algo()
 	 }
 	 return	working_inx;
  }
+
  int PayRoutes::random_queue_algo()
  {
 	 for (int i = 1; i <= m_num_routes; i++)
 	 {
-		 if (m_Routes_array[i].full_check = false)
+		if( m_Routes_array[i].full_queue == false)
 			 return i;
-	 }
+	}
+	 return -1;
  }
-
-	 int PayRoutes::random_queue_algo()
-	 {
-		 unsigned route_free_queue = 0;
-		 int working_inx = 0;
-
-		 for (int i = 1; i <= m_num_routes; i++)
-		 {
-		
-		 }
-		 return	working_inx;
-	 }
- }
-
-
 
 
 int PayRoutes::random_number(int low, int high)

@@ -13,6 +13,6 @@ int main()
 	//RR.push_back(CC, 0);
 
 		
-	PayRoutes PP(5, 5, 1);
+	PayRoutes PP(5, 1);
 	return 0;
 }
