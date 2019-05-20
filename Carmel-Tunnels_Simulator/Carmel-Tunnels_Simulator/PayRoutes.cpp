@@ -52,12 +52,22 @@ void PayRoutes::algoritem_bank(unsigned selection)
 
 unsigned PayRoutes::shortest_algo(Car Ccar)
 {
-	for (int i = 0; i <= m_num_routes; i++)
+	unsigned route_lowest_queue = 0;
+	unsigned working_inx = 0;
+	// Check who has the smallest size of cars in the queue.
+	route_lowest_queue = m_Routes_array[0].size();
+	for (int i = 1; i <= m_num_routes; i++)
 	{
-		 // Check who has the smallest size of cars in the queue.
-		m_Routes_array[i].size();
+		if (m_Routes_array[i].size() > route_lowest_queue)
+		{
+			route_lowest_queue = m_Routes_array[i].size();
+			working_inx = i;
+		}
+
 	}
-	return 1;
+		
+	
+	
 }
 //unsigned PayRoutes::longest_algo(Car Ccar);
 //unsigned PayRoutes::fastest_algo(Car Ccar);

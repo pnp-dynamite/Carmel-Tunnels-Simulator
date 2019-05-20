@@ -15,11 +15,9 @@ unsigned Route::routes_counter = 0;
 // Constructor
 Route::Route() : m_service_time(random_num(5, 20))
 {
-	
 	m_queue = new Car[len];
 	m_Route_Num = routes_counter;
 	routes_counter++;
-
 }
 
 ////	Destructor 
