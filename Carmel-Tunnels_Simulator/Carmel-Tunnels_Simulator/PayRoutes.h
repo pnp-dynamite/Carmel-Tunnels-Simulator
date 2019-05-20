@@ -21,13 +21,12 @@ private:
 	// between 1 to 4: 1.shortest 2.longestv 3.fastest 4.random
 	const unsigned m_algorithm;
 	Route *m_Routes_array;
-	unsigned m_Simulator_time;
-	unsigned m_Car_Generator_time;
+
 
 
 public:
 	// Constructor
-	PayRoutes(unsigned P_time = 60, unsigned number_of_routes = 1, unsigned algoritem = 1);
+	PayRoutes(unsigned number_of_routes, unsigned algoritem = 1);
 	//	Destructor 
 	~PayRoutes();
 	//Copy Constructor
@@ -43,7 +42,7 @@ public:
 	int PayRoutes::shortest_algo();
 	int PayRoutes::longest_algo();
 	int PayRoutes::fastest_algo();
-	int PayRoutes::random_algo();
+	int PayRoutes::random_queue_algo();
 
 
 };

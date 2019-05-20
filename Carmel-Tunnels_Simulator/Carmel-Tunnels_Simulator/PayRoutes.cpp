@@ -9,12 +9,10 @@
 using namespace std;
 
  //Constructor
-PayRoutes::PayRoutes(unsigned P_time, unsigned number_of_routes, unsigned algoritem) 
+PayRoutes::PayRoutes(unsigned number_of_routes, unsigned algoritem) 
 	: m_num_routes(number_of_routes), m_algorithm(algoritem)
 {
 	m_Routes_array = new Route[m_num_routes];
-	m_Simulator_time = P_time;
-	m_Car_Generator_time = this->random_number(1, 20);
 
 }
 //
@@ -43,7 +41,7 @@ int PayRoutes::algoritem_selector(int selection)
 	case 3:
 		return fastest_algo();
 	case 4:
-		return random_number(0, m_Routes_array[0].len);
+		return 
 	default:
 		break;
 	}
@@ -108,9 +106,26 @@ int PayRoutes::shortest_algo()
 	 }
 	 return	working_inx;
  }
- int PayRoutes::random_algo()
+ int PayRoutes::random_queue_algo()
  {
+	 for (int i = 1; i <= m_num_routes; i++)
+	 {
+		 if (m_Routes_array[i].full_check = false)
+			 return i;
+	 }
+ }
 
+	 int PayRoutes::random_queue_algo()
+	 {
+		 unsigned route_free_queue = 0;
+		 int working_inx = 0;
+
+		 for (int i = 1; i <= m_num_routes; i++)
+		 {
+		
+		 }
+		 return	working_inx;
+	 }
  }
 
 
