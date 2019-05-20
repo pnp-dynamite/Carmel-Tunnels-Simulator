@@ -33,7 +33,7 @@ public:
 	//Copy Constructor
 	//PayRoutes(const PayRoutes& P);
 
-	void PayRoutes::algoritem_selector(unsigned selection);
+	int PayRoutes::algoritem_selector(int selection);
 	int PayRoutes::random_number(int low, int high);
 	
 	

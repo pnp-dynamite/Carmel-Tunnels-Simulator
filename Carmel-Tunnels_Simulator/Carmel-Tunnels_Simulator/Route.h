@@ -18,11 +18,11 @@ using namespace std;
 class Route {
 private:
 	Car *m_queue;
-	const unsigned m_service_time;
 	int m_Route_Num=0;
 	int m_empty_slots = len;
 
 public:
+	const unsigned m_service_time;
 	// Globle Routes counter
 	static unsigned routes_counter;
 	static unsigned len;
