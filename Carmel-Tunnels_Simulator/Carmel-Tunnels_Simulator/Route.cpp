@@ -62,7 +62,6 @@ unsigned Route::push_back(Car& CC,unsigned push_inx)
 	if(full_queue != true)
 		queue_advance(push_inx);
 
-	//m_last_queue_inx--;
 	m_empty_slots--;
 	empty_check();
 	return size();
