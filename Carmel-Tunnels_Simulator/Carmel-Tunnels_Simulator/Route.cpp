@@ -37,9 +37,9 @@ Route::Route(const Route& RR): m_service_time(RR.m_service_time)
 	m_Route_Num = RR.m_Route_Num;
 }
 
-int Route::top()
+Car Route::top()
 {
-	return size() + 1;
+	return m_queue[0];
 }
 unsigned Route::pop(unsigned pop_inx) //return the remaing free slots
 {  
@@ -49,6 +49,11 @@ unsigned Route::pop(unsigned pop_inx) //return the remaing free slots
 	m_empty_slots++;
 	empty_check();
 	return size();
+
+}
+bool Route::car_time_out()
+{
+
 
 }
 //Function that get Car and index to push and return the next free index
