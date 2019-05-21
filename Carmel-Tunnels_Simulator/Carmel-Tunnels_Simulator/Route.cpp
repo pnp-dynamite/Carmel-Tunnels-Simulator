@@ -13,7 +13,7 @@ unsigned Route::routes_counter = 0;
 
 
 // Constructor
-Route::Route() : m_service_time(random_num(5, 20) )
+Route::Route() : m_service_time(random_number(5, 20) )
 {
 	m_queue = new Car[len];
 	m_Route_Num = routes_counter;
@@ -44,20 +44,20 @@ Car Route::top()
 {
 	return m_queue[0];
 }
-void Route::pop(unsigned pop_inx) 
+void Route::pop() 
 {  
 	//תיעוד בקובץ פרטי המכונית היוצאת
 
-	m_queue[pop_inx].car_delete();
+	m_queue[0].car_delete();
 	m_empty_slots++;
 	empty_check();
 
 }
-bool Route::car_time_out()
-{
-
-
-}
+//bool Route::car_time_out()
+//{
+//
+//
+//}
 //Function that get Car and index to push and return the next free index
 unsigned Route::push_back(Car& CC,unsigned push_inx)
 {
@@ -66,7 +66,7 @@ unsigned Route::push_back(Car& CC,unsigned push_inx)
 		queue_advance(push_inx);
 
 	m_empty_slots--;
-	empty_check();
+	full_check();
 	return size();
 } 
 

@@ -49,7 +49,7 @@ public:
 	unsigned Route::push_back(Car& CC, unsigned push_inx);
 	bool Route::car_time_out();
 	// the function get the Car remoce indnx and return the remming free slots in the queue.
-	void Route::pop(unsigned pop_inx);
+	void Route::pop();
 
 	void Route::queue_advance(unsigned last_inx); 
 
