@@ -37,9 +37,9 @@ Route::Route(const Route& RR): m_service_time(RR.m_service_time)
 	m_Route_Num = RR.m_Route_Num;
 }
 
-Car Route::top()
+int Route::top()
 {
-	return m_queue[0];
+	return size() + 1;
 }
 unsigned Route::pop(unsigned pop_inx) //return the remaing free slots
 {  

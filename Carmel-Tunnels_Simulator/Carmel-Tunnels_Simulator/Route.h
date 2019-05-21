@@ -50,7 +50,7 @@ public:
 
 	void Route::queue_advance(unsigned last_inx); 
 
-	Car Route::top();
+	int Route::top();
 	const unsigned Route::size();
 
 

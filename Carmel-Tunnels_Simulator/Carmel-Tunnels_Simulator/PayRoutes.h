@@ -22,9 +22,8 @@ private:
 	const unsigned m_algorithm;
 	Route *m_Routes_array;
 
-
-
 public:
+
 	// Constructor
 	PayRoutes(unsigned number_of_routes, unsigned algoritem = 1);
 	//	Destructor 
@@ -35,7 +34,7 @@ public:
 	int PayRoutes::algoritem_selector(int selection);
 	int PayRoutes::random_number(int low, int high);
 	
-	
+	Car PayRoutes::Car_Generator(unsigned current_time, unsigned service_time);
 
 	//int PayRoutes::routes_checker(int num_of_routes, int algoritem);
 	// כדי להפוך לפונקציה אחת כוללת
@@ -43,6 +42,8 @@ public:
 	int PayRoutes::longest_algo();
 	int PayRoutes::fastest_algo();
 	int PayRoutes::random_queue_algo();
+
+	int PayRoutes::Simulator(int Sim_total_time, int num_of_routes, int algo);
 
 
 };

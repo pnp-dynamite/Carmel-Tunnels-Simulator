@@ -17,7 +17,7 @@ using namespace std;
 class Car {
 private:
 
-	basic_string<char> Model;
+	string Model;
 	unsigned ID;
 	
 
@@ -27,7 +27,7 @@ public:
 	unsigned Exit_time = 0; 
 
 	// Constructor For spacific car
-	Car(basic_string<char> car_model = "",unsigned car_id = 0, unsigned AT = 0, unsigned ET = 0);
+	Car(string car_model = "",unsigned car_id = 0, unsigned AT = 0, unsigned ET = 0);
 	// Constructor For random car
 	Car::Car(unsigned AT, unsigned ET);
 
@@ -37,17 +37,16 @@ public:
 	Car(const Car& A);
 
 	// Generate random model name
-	basic_string<char> Car::Model_Generator();
+	string Car::Model_Generator();
 	// Generate random 8digits ID number
 	unsigned Car::ID_Generator();
 
 	// Getters
 	const int Car::get_Car_ID();
-	const basic_string<char> Car::get_Car_Model();
+	const string Car::get_Car_Model();
 	const int Car::get_Car_AT(); //AT - Arrival Time
 	const int Car::get_Car_ET(); //ET - Exit Time
 
-	Car Car::Car_Generator(unsigned current_time, unsigned service_time);
 	//void Car::set_Arrival_time(int AT);
 	//void Car::set_exit_time(int ET);
 	void Car::car_delete();

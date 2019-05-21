@@ -10,7 +10,7 @@ using namespace std;
 
 
 // Constructor For spacific car
-Car::Car(basic_string<char> car_model, unsigned car_id, unsigned AT, unsigned ET)
+Car::Car(string car_model, unsigned car_id, unsigned AT, unsigned ET)
 {
 	Arrival_time = AT;
 	Exit_time = ET;
@@ -40,11 +40,6 @@ Car::Car(const Car& C)
 	Arrival_time = C.Arrival_time;
 
 }
-Car Car::Car_Generator(unsigned current_time, unsigned service_time)
-{
-	Car CCar(current_time, current_time + service_time);
-	return CCar;
-}
 
 void Car::car_delete()
 {
@@ -54,9 +49,9 @@ void Car::car_delete()
 	Arrival_time = 0;
 }
 // Generate random model name
-basic_string<char> Car::Model_Generator()
+string Car::Model_Generator()
 {
-	basic_string<char> Model_List[10] = { "Honda", "Mazda", "Toyota", "Suzuki", "Peugeot",
+	string Model_List[10] = { "Honda", "Mazda", "Toyota", "Suzuki", "Peugeot",
 														"Kia", "Volvo", "Opel", "BMW", "FIAT" };
 	return Model_List[rand() % 10];
 }
@@ -71,7 +66,7 @@ const int Car::get_Car_ID()
 {
 	return ID;
 }
-const basic_string<char> Car::get_Car_Model()
+const string Car::get_Car_Model()
 {
 	return Model;
 }
