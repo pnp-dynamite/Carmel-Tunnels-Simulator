@@ -41,7 +41,7 @@ Car Route::top()
 {
 	return m_queue[0];
 }
-void Route::pop(unsigned pop_inx) //return the remaing free slots
+void Route::pop(unsigned pop_inx) 
 {  
 	//תיעוד בקובץ פרטי המכונית היוצאת
 

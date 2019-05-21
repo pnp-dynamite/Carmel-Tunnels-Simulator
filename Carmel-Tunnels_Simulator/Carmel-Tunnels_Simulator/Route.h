@@ -21,7 +21,7 @@ private:
 	int m_empty_slots = len;
 
 public:
-	Car *m_queue;
+	Car *m_queue; // חייב לשנות ל"אישי" או שתוריד ניקוד..
 	const unsigned m_service_time;
 	// Globle Routes counter
 	static unsigned routes_counter;
