@@ -145,13 +145,11 @@
     <ClInclude Include="Car.h" />
     <ClInclude Include="PayRoutes.h" />
     <ClInclude Include="Route.h" />
-    <ClInclude Include="Simulator.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Car.cpp" />
     <ClCompile Include="PayRoutes.cpp" />
     <ClCompile Include="Route.cpp" />
-    <ClCompile Include="Simulator.cpp" />
     <ClCompile Include="Tester.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
