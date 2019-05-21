@@ -177,6 +177,7 @@ int PayRoutes::Simulator(int Sim_total_time, int num_of_routes, int algo)
 	for (int Current_Time = 1; Current_Time < Sim_total_time; Current_Time++)
 	{
 		PP.routes_pop_check(Current_Time);
+
 		if (Current_Time == time_car_generate)
 		{
 			inx = PP.algoritem_selector(PP.m_algorithm);
