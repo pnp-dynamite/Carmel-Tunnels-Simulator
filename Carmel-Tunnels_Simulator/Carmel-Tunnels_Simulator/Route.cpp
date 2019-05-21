@@ -41,14 +41,13 @@ Car Route::top()
 {
 	return m_queue[0];
 }
-unsigned Route::pop(unsigned pop_inx) //return the remaing free slots
+void Route::pop(unsigned pop_inx) //return the remaing free slots
 {  
 	//תיעוד בקובץ פרטי המכונית היוצאת
 
 	m_queue[pop_inx].car_delete();
 	m_empty_slots++;
 	empty_check();
-	return size();
 
 }
 bool Route::car_time_out()

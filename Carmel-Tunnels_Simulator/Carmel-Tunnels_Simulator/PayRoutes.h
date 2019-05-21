@@ -36,8 +36,8 @@ public:
 	
 	Car PayRoutes::Car_Generator(unsigned current_time, unsigned service_time);
 
-	//int PayRoutes::routes_checker(int num_of_routes, int algoritem);
-	// כדי להפוך לפונקציה אחת כוללת
+	void PayRoutes::routes_pop_check(int given_time);
+
 	int PayRoutes::shortest_algo();
 	int PayRoutes::longest_algo();
 	int PayRoutes::fastest_algo();

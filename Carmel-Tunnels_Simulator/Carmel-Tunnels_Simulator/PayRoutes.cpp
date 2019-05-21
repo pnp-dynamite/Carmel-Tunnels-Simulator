@@ -135,9 +135,23 @@ Car PayRoutes::Car_Generator(unsigned current_time, unsigned service_time)
 	return CCar;
 }
 
+void PayRoutes::routes_pop_check(int given_time)
+{
+	for (int i = 0; i < m_num_routes; i++)
+	{
+		if (m_Routes_array[i].m_queue[0].Exit_time == given_time)
+		{
+			m_Routes_array[i].pop(i);
+		}
+	}
+
+}
+
 int PayRoutes::Simulator(int Sim_total_time, int num_of_routes, int algo)
 {
 	PayRoutes PP(num_of_routes, algo);
+	PP.routes_pop_check();
+	Car A_Car;
 	int time_car_generate = PP.random_number(1, 20);
 	int inx;
 	for (int Current_Time = 0; Current_Time < Sim_total_time; Current_Time++)
@@ -145,9 +159,13 @@ int PayRoutes::Simulator(int Sim_total_time, int num_of_routes, int algo)
 		if (Current_Time == time_car_generate)
 		{
 			inx = PP.algoritem_selector(PP.m_algorithm);
-			Car A_Car = PP.Car_Generator(Current_Time, PP.m_Routes_array[inx].m_service_time);
-		}
-		
+			A_Car = PP.Car_Generator(Current_Time, PP.m_Routes_array[inx].m_service_time);
+		}bbv
+		PP.m_Routes_array[inx].push_back(A_Car, PP.m_Routes_array[inx].size())
+
+
+
+
 
 
 	}

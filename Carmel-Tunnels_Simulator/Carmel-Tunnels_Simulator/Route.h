@@ -17,11 +17,11 @@ using namespace std;
 
 class Route {
 private:
-	Car *m_queue;
-	int m_Route_Num=0;
+	int m_Route_Num;
 	int m_empty_slots = len;
 
 public:
+	Car *m_queue;
 	const unsigned m_service_time;
 	// Globle Routes counter
 	static unsigned routes_counter;
@@ -47,7 +47,7 @@ public:
 	unsigned Route::push_back(Car& CC, unsigned push_inx);
 	bool Route::car_time_out();
 	// the function get the Car remoce indnx and return the remming free slots in the queue.
-	unsigned Route::pop(unsigned pop_inx);
+	void Route::pop(unsigned pop_inx);
 
 	void Route::queue_advance(unsigned last_inx); 
 
