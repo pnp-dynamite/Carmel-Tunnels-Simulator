@@ -13,7 +13,7 @@ unsigned Route::routes_counter = 0;
 
 
 // Constructor
-Route::Route() : m_service_time(random_num(5, 20))
+Route::Route() : m_service_time(random_num(5, 20) )
 {
 	m_queue = new Car[len];
 	m_Route_Num = routes_counter;
@@ -36,7 +36,10 @@ Route::Route(const Route& RR): m_service_time(RR.m_service_time)
 	m_empty_slots = RR.m_empty_slots;
 	m_Route_Num = RR.m_Route_Num;
 }
-
+int Route::get_service_time()
+{
+	return m_service_time;
+}
 Car Route::top()
 {
 	return m_queue[0];
@@ -87,7 +90,7 @@ void Route::empty_check()
 	empty_queue = (m_empty_slots == len ? true : false);
 }
 
-int Route::random_num(int low, int high)
+int Route::random_number(int low, int high)
 {
 	int num;
 	/* generate secret number between low and high: */

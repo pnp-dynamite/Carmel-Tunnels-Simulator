@@ -109,12 +109,13 @@ int PayRoutes::shortest_algo()
 	 // all full queue will set to -1 = leaving CAR
 	 int working_inx = 0;
 	 // Check who has the smallest size of cars in the queue.
-	 route_fastest_queue = m_Routes_array[0].m_service_time;
+	 route_fastest_queue = m_Routes_array[0].get_service_time();
 	 for (int i = 1; i <= m_num_routes; i++)
 	 {
-		 if (m_Routes_array[i].size() > route_fastest_queue && m_Routes_array[i].full_queue == false)
+		 if (m_Routes_array[i].size() > route_fastest_queue 
+								&& m_Routes_array[i].full_queue == false)
 		 {
-			 route_fastest_queue = m_Routes_array[i].m_service_time;
+			 route_fastest_queue = m_Routes_array[i].get_service_time();
 			 working_inx = i;
 			 dead_queue--;
 		 }
@@ -148,14 +149,6 @@ int PayRoutes::shortest_algo()
  }
 
 
-int PayRoutes::random_number(int low, int high)
-{
-	int num;
-	/* generate secret number between low and high: */
-	num = rand() % (high - low + 1) + low;
-	return num;
-}
-
 Car PayRoutes::Car_Generator(unsigned current_time, unsigned service_time)
 {
 	Car CCar(current_time, current_time + service_time);
@@ -166,7 +159,7 @@ void PayRoutes::routes_pop_check(int given_time)
 {
 	for (int i = 0; i < m_num_routes; i++)
 	{
-		if (m_Routes_array[i].m_queue[0].Exit_time == given_time)
+		if (m_Routes_array[i].top().get_Car_ET() == given_time)
 		{
 			m_Routes_array[i].pop(i);
 		}
@@ -186,7 +179,7 @@ int PayRoutes::Simulator(int Sim_total_time, int num_of_routes, int algo)
 		if (Current_Time == time_car_generate)
 		{
 			inx = PP.algoritem_selector(PP.m_algorithm);
-			A_Car = PP.Car_Generator(Current_Time, PP.m_Routes_array[inx].m_service_time);
+			A_Car = PP.Car_Generator(Current_Time, PP.m_Routes_array[inx].get_service_time());
 		}
 
 
@@ -195,3 +188,10 @@ int PayRoutes::Simulator(int Sim_total_time, int num_of_routes, int algo)
 	}
 }
 
+int PayRoutes::random_number(int low, int high)
+{
+	int num;
+	/* generate secret number between low and high: */
+	num = rand() % (high - low + 1) + low;
+	return num;
+}

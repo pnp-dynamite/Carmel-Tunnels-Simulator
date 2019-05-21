@@ -19,13 +19,11 @@ private:
 
 	string Model;
 	unsigned ID;
-	
+	unsigned Arrival_time = 0;
+	unsigned Exit_time = 0;
 
 
 public:
-	unsigned Arrival_time = 0; 
-	unsigned Exit_time = 0; 
-
 	// Constructor For spacific car
 	Car(string car_model = "",unsigned car_id = 0, unsigned AT = 0, unsigned ET = 0);
 	// Constructor For random car
@@ -44,14 +42,14 @@ public:
 	// Getters
 	const int Car::get_Car_ID();
 	const string Car::get_Car_Model();
+
 	const int Car::get_Car_AT(); //AT - Arrival Time
 	const int Car::get_Car_ET(); //ET - Exit Time
 
-	//void Car::set_Arrival_time(int AT);
-	//void Car::set_exit_time(int ET);
+	//setters
+	void Car::set_Arrival_time(int AT);
+	void Car::set_exit_time(int ET);
 	void Car::car_delete();
 	Car Car::Assign(Car& CC);
 	bool Car::car_validation(Car& CCar);
-
-	int Car::random_num(int low, int high);
 };

@@ -80,14 +80,14 @@ const int Car::get_Car_ET()
 }
 
 
-//void Car::set_Arrival_time(int AT)
-//{
-//	Arrival_time = AT;
-//}
-//void Car::set_exit_time(int ET)
-//{
-//	Exit_time = ET;
-//}
+void Car::set_Arrival_time(int AT)
+{
+	Arrival_time = AT;
+}
+void Car::set_exit_time(int ET)
+{
+	Exit_time = ET;
+}
 Car Car::Assign(Car& CC) //TBD change to operator overload =
 {
 	Model = CC.Model;
@@ -100,10 +100,4 @@ bool Car::car_validation(Car& CCar)
 {
 	return CCar.ID != 0 ? true : false;
 }
-int Car::random_num(int low, int high)
-{
-	int num;
-	/* generate secret number between low and high: */
-	num = rand() % (high - low + 1) + low;
-	return num;
-}
+

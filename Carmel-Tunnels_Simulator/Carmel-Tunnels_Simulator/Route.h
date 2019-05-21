@@ -19,10 +19,11 @@ class Route {
 private:
 	int m_Route_Num;
 	int m_empty_slots = len;
+	const unsigned m_service_time;
+	Car *m_queue;
 
 public:
-	Car *m_queue; // חייב לשנות ל"אישי" או שתוריד ניקוד..
-	const unsigned m_service_time;
+	// TBD - maybe should be private
 	// Globle Routes counter
 	static unsigned routes_counter;
 	static unsigned len;
@@ -42,7 +43,8 @@ public:
 	void Route::full_check();
 	void Route::empty_check();
 
-	int Route::random_num(int low, int high);
+	int Route::get_service_time();
+
 	// the function get the Car enter indnx and return the remming free slots in the queue.
 	unsigned Route::push_back(Car& CC, unsigned push_inx);
 	bool Route::car_time_out();
@@ -54,6 +56,7 @@ public:
 	Car Route::top();
 	const unsigned Route::size();
 
+	int Route::random_number(int low, int high);
 
 };
 
