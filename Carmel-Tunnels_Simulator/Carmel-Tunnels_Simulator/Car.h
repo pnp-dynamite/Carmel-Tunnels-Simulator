@@ -19,8 +19,8 @@ private:
 
 	string Model;
 	unsigned ID;
-	unsigned Arrival_time = 0;
-	unsigned Exit_time = 0;
+	unsigned Arrival_time;
+	unsigned Exit_time;
 
 
 public:

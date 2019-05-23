@@ -51,6 +51,7 @@ void Route::pop()
 	m_queue[0].car_delete();
 	m_empty_slots++;
 	empty_check();
+	queue_advance();
 
 }
 //bool Route::car_time_out()
@@ -62,8 +63,8 @@ void Route::pop()
 unsigned Route::push_back(Car& CC,unsigned push_inx)
 {
 	m_queue[push_inx].Assign(CC);
-	if(full_queue != true)
-		queue_advance(push_inx);
+	//if(full_queue != true)
+		//queue_advance(push_inx);
 
 	m_empty_slots--;
 	full_check();
@@ -74,7 +75,7 @@ const unsigned Route::size()
 {
 	return len - m_empty_slots;
 }
-void Route::queue_advance(unsigned last_inx)
+void Route::queue_advance()
 {
 	for (int i = 0; i < size(); i++)
 	{

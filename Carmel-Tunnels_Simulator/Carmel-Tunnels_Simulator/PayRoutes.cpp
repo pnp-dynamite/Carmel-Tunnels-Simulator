@@ -47,7 +47,19 @@ int PayRoutes::algoritem_selector(int selection)
 	}
 }
 
-
+bool PayRoutes::check_all_empty()
+{
+	int all_empty = 0;
+	//int i;
+	for (int i = 0; i < m_num_routes; i++)
+	{
+		m_Routes_array[i].empty_queue == true ? all_empty++ : all_empty--;
+	}
+	if(all_empty == m_num_routes)
+		return true;
+	else
+		return false;
+}
 int PayRoutes::shortest_algo()
 {
 	unsigned route_lowest_queue = 0;
@@ -168,7 +180,7 @@ void PayRoutes::routes_pop_check(int given_time)
 
 }
 
-int PayRoutes::Simulator(int Sim_total_time, int num_of_routes, int algo)
+int Simulator(int Sim_total_time, int num_of_routes, int algo)
 {
 	PayRoutes PP(num_of_routes, algo);
 	Car A_Car;
@@ -180,12 +192,14 @@ int PayRoutes::Simulator(int Sim_total_time, int num_of_routes, int algo)
 
 		if (Current_Time == time_car_generate)
 		{
+			if (PP.check_all_empty() == true)
+				inx = 0;
+			else
 			inx = PP.algoritem_selector(PP.m_algorithm);
+
 			A_Car = PP.Car_Generator(Current_Time, PP.m_Routes_array[inx].get_service_time());
+			PP.m_Routes_array[inx].push_back(A_Car, PP.m_Routes_array[inx].size());
 		}
-
-
-		PP.m_Routes_array[inx].push_back(A_Car, PP.m_Routes_array[inx].size());
 
 	}
 	return 0;

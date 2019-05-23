@@ -13,7 +13,7 @@ int main()
 	//RR.push_back(CC, 0);
 
 		
-	PayRoutes PP(5, 1);
-	PP.Simulator(3000, 2, 1);
+	//PayRoutes PP(5, 1);
+	Simulator(3000, 2, 1);
 	return 0;
 }

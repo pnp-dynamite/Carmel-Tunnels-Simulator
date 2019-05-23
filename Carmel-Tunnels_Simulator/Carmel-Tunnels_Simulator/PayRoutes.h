@@ -33,7 +33,8 @@ public:
 
 	int PayRoutes::algoritem_selector(int selection);
 	
-	
+	bool PayRoutes::check_all_empty();
+
 	Car PayRoutes::Car_Generator(unsigned current_time, unsigned service_time);
 
 	void PayRoutes::routes_pop_check(int given_time);
@@ -43,7 +44,7 @@ public:
 	int PayRoutes::fastest_algo();
 	int PayRoutes::random_queue_algo();
 
-	int PayRoutes::Simulator(int Sim_total_time, int num_of_routes, int algo);
+	friend int Simulator(int Sim_total_time, int num_of_routes, int algo);
 
 	int PayRoutes::random_number(int low, int high);
 };

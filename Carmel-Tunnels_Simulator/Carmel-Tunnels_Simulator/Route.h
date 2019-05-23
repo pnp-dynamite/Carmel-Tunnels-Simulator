@@ -51,7 +51,7 @@ public:
 	// the function get the Car remoce indnx and return the remming free slots in the queue.
 	void Route::pop();
 
-	void Route::queue_advance(unsigned last_inx); 
+	void Route::queue_advance(); 
 
 	Car Route::top();
 	const unsigned Route::size();
