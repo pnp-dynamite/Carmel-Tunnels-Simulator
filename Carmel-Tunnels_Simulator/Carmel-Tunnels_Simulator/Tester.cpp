@@ -13,7 +13,7 @@ int main()
 	//RR.push_back(CC, 0);
 
 	cout << "4 , 1" << endl;
-	for (int i = 0; i < 25; i++)
+	for (int i = 0; i < 10; i++)
 	{
 		Simulator(86400, 2, 2);
 	}

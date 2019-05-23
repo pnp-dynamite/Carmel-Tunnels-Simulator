@@ -47,6 +47,6 @@ public:
 	int PayRoutes::random_queue_algo();
 
 	friend int Simulator(int Sim_total_time, int num_of_routes, int algo);
-
 	friend int random_number(int low, int high);
+
 };

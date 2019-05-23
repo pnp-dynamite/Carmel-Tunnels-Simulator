@@ -198,7 +198,7 @@ int Simulator(int Sim_total_time, int num_of_routes, int algo)
 {
 	PayRoutes PP(num_of_routes, algo);
 	Car A_Car;
-	int time_car_generate = 1; //random_number(1, 20);
+	int time_car_generate = 2;// random_number(1, 20);
 	int inx;
 	for (int Current_Time = 0; Current_Time < Sim_total_time; Current_Time++)
 	{
