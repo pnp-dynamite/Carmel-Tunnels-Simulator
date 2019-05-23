@@ -15,7 +15,7 @@ int main()
 	cout << "4 , 1" << endl;
 	for (int i = 0; i < 10; i++)
 	{
-		Simulator(86400, 2, 2);
+		Simulator(86400, 1, 2);
 	}
 	
 	//cout << "5 , 2" << endl;
