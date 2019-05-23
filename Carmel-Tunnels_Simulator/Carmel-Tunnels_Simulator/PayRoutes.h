@@ -24,8 +24,8 @@ private:
 
 
 public:
-	static int car_enter_counter;
-	static int car_left_counter;
+	int car_enter_counter = 0;
+	int car_left_counter = 0;
 	// Constructor
 	PayRoutes(int number_of_routes = 1, int algoritem = 1);
 	//	Destructor 

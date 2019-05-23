@@ -8,8 +8,8 @@
 #pragma once
 using namespace std;
 
-int PayRoutes::car_enter_counter = 0;
-int PayRoutes::car_left_counter = 0;
+//int PayRoutes::car_enter_counter = 0;
+//int PayRoutes::car_left_counter = 0;
 
  //Constructor
 PayRoutes::PayRoutes(int number_of_routes, int algoritem) 
@@ -198,7 +198,7 @@ int Simulator(int Sim_total_time, int num_of_routes, int algo)
 {
 	PayRoutes PP(num_of_routes, algo);
 	Car A_Car;
-	int time_car_generate = 1;//PP.random_number(1, 20);
+	int time_car_generate = 1; //random_number(1, 20);
 	int inx;
 	for (int Current_Time = 0; Current_Time < Sim_total_time; Current_Time++)
 	{
@@ -228,7 +228,11 @@ int Simulator(int Sim_total_time, int num_of_routes, int algo)
 	}
 	cout << "number of car that entered: " << PP.car_enter_counter << endl;
 	cout << "number of car that left: " << PP.car_left_counter << endl;
-	cout << "Service tim: " << PP.m_Routes_array[0].get_service_time() << endl;
+	cout << "Car Created time: " << time_car_generate << endl;
+	for (int i = 0; i < PP.m_num_routes; i++)
+	{
+		cout << "Service time: " << PP.m_Routes_array[i].get_service_time() << endl;
+	}
 	return 0;
 }
 
