@@ -197,7 +197,7 @@ int Simulator(int Sim_total_time, int num_of_routes, int algo)
 			else
 			inx = PP.algoritem_selector(PP.m_algorithm);
 
-			A_Car = PP.Car_Generator(Current_Time, PP.m_Routes_array[inx].get_service_time());
+			A_Car.Assign(PP.Car_Generator(Current_Time, PP.m_Routes_array[inx].get_service_time()));
 			PP.m_Routes_array[inx].push_back(A_Car, PP.m_Routes_array[inx].size());
 		}
 
