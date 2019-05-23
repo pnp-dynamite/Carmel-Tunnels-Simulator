@@ -17,15 +17,17 @@ using namespace std;
 class PayRoutes {
 
 private:
-	const unsigned m_num_routes;
+	const int m_num_routes;
 	// between 1 to 4: 1.shortest 2.longestv 3.fastest 4.random
-	const unsigned m_algorithm;
+	const int m_algorithm;
 	Route *m_Routes_array;
 
-public:
 
+public:
+	static int car_enter_counter;
+	static int car_left_counter;
 	// Constructor
-	PayRoutes(unsigned number_of_routes, unsigned algoritem = 1);
+	PayRoutes(int number_of_routes = 1, int algoritem = 1);
 	//	Destructor 
 	~PayRoutes();
 	//Copy Constructor
@@ -35,7 +37,7 @@ public:
 	
 	bool PayRoutes::check_all_empty();
 
-	Car PayRoutes::Car_Generator(unsigned current_time, unsigned service_time);
+	Car PayRoutes::Car_Generator(int current_time, int service_time);
 
 	void PayRoutes::routes_pop_check(int given_time);
 
@@ -46,5 +48,5 @@ public:
 
 	friend int Simulator(int Sim_total_time, int num_of_routes, int algo);
 
-	int PayRoutes::random_number(int low, int high);
+	friend int random_number(int low, int high);
 };

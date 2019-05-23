@@ -18,16 +18,16 @@ class Car {
 private:
 
 	string Model;
-	unsigned ID;
-	unsigned Arrival_time;
-	unsigned Exit_time;
+	int ID;
+	int Arrival_time;
+	int Exit_time;
 
 
 public:
 	// Constructor For spacific car
-	Car(string car_model = "",unsigned car_id = 0, unsigned AT = 0, unsigned ET = 0);
+	Car(string car_model = "",int car_id = 0, int AT = -1, int ET = -1); // fix
 	// Constructor For random car
-	Car::Car(unsigned AT, unsigned ET);
+	Car::Car(int AT, int ET);
 
 	//	Destructor 
 	~Car();
@@ -37,7 +37,7 @@ public:
 	// Generate random model name
 	string Car::Model_Generator();
 	// Generate random 8digits ID number
-	unsigned Car::ID_Generator();
+	int Car::ID_Generator();
 
 	// Getters
 	const int Car::get_Car_ID();

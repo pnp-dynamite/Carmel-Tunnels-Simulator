@@ -8,15 +8,14 @@
 #pragma once///
 using namespace std;
 
-unsigned Route::len = 5;				// Static Initialization.	
-unsigned Route::routes_counter = 0;
+int Route::len = 5;				// Static Initialization.	
+int Route::routes_counter = 0;
 
 
 // Constructor
-Route::Route() : m_service_time(random_number(5, 20) )
+Route::Route() : m_service_time(random_number(5, 20) ), m_empty_slots(len), m_Route_Num(routes_counter)
 {
 	m_queue = new Car[len];
-	m_Route_Num = routes_counter;
 	routes_counter++;
 }
 
@@ -49,8 +48,10 @@ void Route::pop()
 	//תיעוד בקובץ פרטי המכונית היוצאת
 
 	m_queue[0].car_delete();
+	//top().car_delete();
 	m_empty_slots++;
 	empty_check();
+	full_check();
 	queue_advance();
 
 }
@@ -60,7 +61,7 @@ void Route::pop()
 //
 //}
 //Function that get Car and index to push and return the next free index
-unsigned Route::push_back(Car& CC,unsigned push_inx)
+void Route::push_back(Car& CC,int push_inx)
 {
 	m_queue[push_inx].Assign(CC);
 	//if(full_queue != true)
@@ -68,19 +69,22 @@ unsigned Route::push_back(Car& CC,unsigned push_inx)
 
 	m_empty_slots--;
 	full_check();
-	return size();
+	empty_check();
 } 
 
-const unsigned Route::size()
+int Route::size()
 {
-	return len - m_empty_slots;
+	return (len - m_empty_slots);
 }
 void Route::queue_advance()
 {
-	for (int i = 0; i < size(); i++)
+	int j = 1;
+	for (int i = 0; i < len && j < len; i++, j++)
 	{
-		this->m_queue[i].Assign(this->m_queue[i + 1]);
+		this->m_queue[i].Assign(this->m_queue[j]);
 	}
+
+	this->m_queue[len - 1].car_delete();
 }
 void Route::full_check()
 {
@@ -91,12 +95,13 @@ void Route::empty_check()
 	empty_queue = (m_empty_slots == len ? true : false);
 }
 
-int Route::random_number(int low, int high)
-{
-	int num;
-	/* generate secret number between low and high: */
-	num = rand() % (high - low + 1) + low;
-	return num;
-}
+//int Route::random_number(int low, int high)
+//{
+//	srand(time(0));
+//	int num;
+//	/* generate secret number between low and high: */
+//	num = rand() % (high - low + 1) + low;
+//	return num;
+//}
 
 

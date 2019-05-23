@@ -6,14 +6,14 @@ using namespace std;
 
 int main()
 {
-
+	srand(time(0));
 	//Route RR;
 	//RR.pop(0);
 	//Car CC(2, 4);
 	//RR.push_back(CC, 0);
 
-		
-	//PayRoutes PP(5, 1);
-	Simulator(3000, 2, 1);
+	
+	Simulator(30, 2, 4);
+
 	return 0;
 }

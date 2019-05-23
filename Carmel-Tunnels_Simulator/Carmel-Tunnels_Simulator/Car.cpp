@@ -10,7 +10,7 @@ using namespace std;
 
 
 // Constructor For spacific car
-Car::Car(string car_model, unsigned car_id, unsigned AT, unsigned ET)
+Car::Car(string car_model, int car_id, int AT, int ET)
 {
 	Arrival_time = AT;
 	Exit_time = ET;
@@ -18,7 +18,7 @@ Car::Car(string car_model, unsigned car_id, unsigned AT, unsigned ET)
 	ID = car_id;
 }
 //// Constructor For random car
-Car::Car(unsigned AT, unsigned ET)
+Car::Car(int AT, int ET)
 {
 	Arrival_time = AT;
 	Exit_time = ET;
@@ -38,6 +38,7 @@ Car::Car(const Car& C)
 	Model = C.Model;
 	ID = C.ID;
 	Arrival_time = C.Arrival_time;
+	Exit_time = C.Exit_time;
 
 }
 
@@ -57,7 +58,7 @@ string Car::Model_Generator()
 }
 
 // Generate random 8Digits ID number
-unsigned Car::ID_Generator()
+int Car::ID_Generator()
 {
 	return (double)rand() / (RAND_MAX + 1) * (99999999 - 10000000) + 10000000;
 }

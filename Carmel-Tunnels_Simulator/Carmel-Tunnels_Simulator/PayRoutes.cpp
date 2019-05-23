@@ -8,8 +8,11 @@
 #pragma once
 using namespace std;
 
+int PayRoutes::car_enter_counter = 0;
+int PayRoutes::car_left_counter = 0;
+
  //Constructor
-PayRoutes::PayRoutes(unsigned number_of_routes, unsigned algoritem) 
+PayRoutes::PayRoutes(int number_of_routes, int algoritem) 
 	: m_num_routes(number_of_routes), m_algorithm(algoritem)
 {
 	m_Routes_array = new Route[m_num_routes];
@@ -46,6 +49,10 @@ int PayRoutes::algoritem_selector(int selection)
 		break;
 	}
 }
+// Create not full routes array
+
+
+
 
 bool PayRoutes::check_all_empty()
 {
@@ -53,6 +60,7 @@ bool PayRoutes::check_all_empty()
 	//int i;
 	for (int i = 0; i < m_num_routes; i++)
 	{
+		m_Routes_array[i].empty_check();
 		m_Routes_array[i].empty_queue == true ? all_empty++ : all_empty--;
 	}
 	if(all_empty == m_num_routes)
@@ -62,52 +70,51 @@ bool PayRoutes::check_all_empty()
 }
 int PayRoutes::shortest_algo()
 {
-	unsigned route_lowest_queue = 0;
-	int dead_queue = -1;
+	int route_lowest_queue = 0;
+	int Num_of_full_queues = 0;
 	// working_inx is the inx with the smallest queue and not full, 
 	// all full queue will set to -1 = leaving CAR
 	int working_inx = 0; 
 	// Check who has the smallest size of cars in the queue.
 	route_lowest_queue = m_Routes_array[0].size();
-	for (int i = 1; i <= m_num_routes; i++)
+	for (int i = 0; i <= m_num_routes; i++)
 	{
-		if (m_Routes_array[i].size() < route_lowest_queue 
+		if (m_Routes_array[i].size() <= route_lowest_queue
 									&& m_Routes_array[i].full_queue == false)
 		{
 			route_lowest_queue = m_Routes_array[i].size();
 			working_inx = i;
-			dead_queue--;
+			Num_of_full_queues--;
 		}
 		else
-			dead_queue++;
+			Num_of_full_queues++;
 	}
-	if (dead_queue == m_num_routes - 1)
+	if (Num_of_full_queues == m_num_routes)
 		return -1;
 	else
 		return	working_inx;
 }
  int PayRoutes::longest_algo()
 {
-	 unsigned route_longest_queue = 0;
-	 int dead_queue = -1;
+	 int route_longest_queue = 0;
+	 int Num_of_full_queues = 0;
 	 // working_inx is the inx with the longest queue and not full, 
 	 // all full queue will set to -1 = leaving CAR
 	 int working_inx = 0;
 	 // Check who has the smallest size of cars in the queue.
-	 route_longest_queue = m_Routes_array[0].size();
-	 for (int i = 1; i <= m_num_routes; i++)
+	 for (int i = 0; i < m_num_routes; i++)
 	 {
-		 if (m_Routes_array[i].size() > route_longest_queue 
+		 if (m_Routes_array[i].size() >= route_longest_queue 
 								&& m_Routes_array[i].full_queue == false)
 		 {
 			 route_longest_queue = m_Routes_array[i].size();
 			 working_inx = i;
-			 dead_queue--;
+			 Num_of_full_queues--;
 		 }
 		 else
-			 dead_queue++;
+			 Num_of_full_queues++;
 	 }
-	 if (dead_queue == m_num_routes - 1)
+	 if (Num_of_full_queues == m_num_routes)
 		 return -1;
 	 else
 		 return	working_inx;
@@ -115,53 +122,60 @@ int PayRoutes::shortest_algo()
 
  int PayRoutes::fastest_algo()
  {
-	 unsigned route_fastest_queue = 0;
-	 int dead_queue = -1;
+	 int route_fastest_queue = 20;
+	 int Num_of_full_queues = 0;
 	 // working_inx is the inx with the fastest queue and not full, 
 	 // all full queue will set to -1 = leaving CAR
 	 int working_inx = 0;
 	 // Check who has the smallest size of cars in the queue.
-	 route_fastest_queue = m_Routes_array[0].get_service_time();
-	 for (int i = 1; i <= m_num_routes; i++)
+	 //route_fastest_queue = m_Routes_array[0].get_service_time();
+	 for (int i = 0; i < m_num_routes; i++)
 	 {
-		 if (m_Routes_array[i].size() > route_fastest_queue 
+		 if (m_Routes_array[i].get_service_time() <= route_fastest_queue
 								&& m_Routes_array[i].full_queue == false)
 		 {
 			 route_fastest_queue = m_Routes_array[i].get_service_time();
 			 working_inx = i;
-			 dead_queue--;
+			 Num_of_full_queues--;
 		 }
 		 else
-			 dead_queue++;
+			 Num_of_full_queues++;
 	 }
-	 if (dead_queue == m_num_routes - 1)
-		 return -1;
-	 else
-		return	working_inx;
- }
-
- int PayRoutes::random_queue_algo()
- {
-	 int dead_queue = -1;
-	 int working_inx, i;
-	 for (i = 0; i <= m_num_routes; i++)
-	 {
-		 if (m_Routes_array[i].full_queue == false)
-		 {
-			 working_inx = i;
-			  dead_queue--; 
-		 }
-		 else
-			 dead_queue++;
-	 }
-	 if (dead_queue == m_num_routes - 1)
+	 if (Num_of_full_queues == m_num_routes)
 		 return -1;
 	 else
 		 return	working_inx;
  }
 
+ int PayRoutes::random_queue_algo()
+ {
+	 int Not_Full_queues = 0;
+	 int inx = 0, working_inx;
+	 for (int j = 0; j < m_num_routes; j++)
+	 {
+		 if(m_Routes_array[j].full_queue == false)
+			 Not_Full_queues++;
+	 }
 
-Car PayRoutes::Car_Generator(unsigned current_time, unsigned service_time)
+	 if (Not_Full_queues == 0)
+		 return working_inx = -1;
+
+	int *NotFullRoutes = new int[Not_Full_queues];
+	for (int j = 0; j < m_num_routes; j++)
+	{
+		if (m_Routes_array[j].full_queue == false)
+		{
+			NotFullRoutes[inx] = j;
+			inx++;
+		}
+	}
+	working_inx = NotFullRoutes[random_number(0, Not_Full_queues-1)];
+	//delete[] NotFullRoutes;
+	return working_inx;
+ }
+
+
+Car PayRoutes::Car_Generator(int current_time, int service_time)
 {
 	Car CCar(current_time, current_time + service_time);
 	return CCar;
@@ -184,28 +198,41 @@ int Simulator(int Sim_total_time, int num_of_routes, int algo)
 {
 	PayRoutes PP(num_of_routes, algo);
 	Car A_Car;
-	int time_car_generate = PP.random_number(1, 20);
+	int time_car_generate = 1;//PP.random_number(1, 20);
 	int inx;
-	for (int Current_Time = 1; Current_Time < Sim_total_time; Current_Time++)
+	for (int Current_Time = 0; Current_Time < Sim_total_time; Current_Time++)
 	{
 		PP.routes_pop_check(Current_Time);
 
-		if (Current_Time == time_car_generate)
+		if (Current_Time%time_car_generate == 0)
 		{
 			if (PP.check_all_empty() == true)
-				inx = 0;
+				algo == 3 ? (inx = PP.algoritem_selector(PP.m_algorithm)) : (inx = random_number(0, num_of_routes-1));
 			else
 			inx = PP.algoritem_selector(PP.m_algorithm);
 
-			A_Car.Assign(PP.Car_Generator(Current_Time, PP.m_Routes_array[inx].get_service_time())); //ff
-			PP.m_Routes_array[inx].push_back(A_Car, PP.m_Routes_array[inx].size());
+			A_Car = PP.Car_Generator(Current_Time, PP.m_Routes_array[inx].get_service_time()); 
+
+			if (inx == -1)
+			{
+				A_Car.car_delete();
+				PP.car_left_counter++;
+			}
+			else
+			{
+				PP.m_Routes_array[inx].push_back(A_Car, PP.m_Routes_array[inx].size());
+				PP.car_enter_counter++;
+			}
 		}
 
 	}
+	cout << "number of car that entered: " << PP.car_enter_counter << endl;
+	cout << "number of car that left: " << PP.car_left_counter << endl;
+	cout << "Service tim: " << PP.m_Routes_array[0].get_service_time() << endl;
 	return 0;
 }
 
-int PayRoutes::random_number(int low, int high)
+int random_number(int low, int high)
 {
 	int num;
 	/* generate secret number between low and high: */
