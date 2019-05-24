@@ -13,10 +13,12 @@ int main()
 	//RR.push_back(CC, 0);
 
 	cout << "4 , 1" << endl;
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 2; i++)
 	{
-		Simulator(86400, 2, 4);
+		Simulator(86400, 2, 2);
 	}
+	cout << "Leaks: " << _CrtDumpMemoryLeaks() << endl;
+
 	
 	//cout << "5 , 2" << endl;
 	//Simulator(86400, 3, 2);

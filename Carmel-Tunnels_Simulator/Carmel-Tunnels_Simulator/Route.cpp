@@ -47,8 +47,8 @@ void Route::pop()
 {  
 	//תיעוד בקובץ פרטי המכונית היוצאת
 
-	m_queue[0].car_delete();
-	//top().car_delete();
+	//m_queue[0].car_delete();
+	top().car_delete();
 	m_empty_slots++;
 	empty_check();
 	full_check();

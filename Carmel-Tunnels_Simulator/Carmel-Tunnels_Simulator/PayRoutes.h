@@ -37,7 +37,7 @@ public:
 	
 	bool PayRoutes::check_all_empty();
 
-	Car PayRoutes::Car_Generator(int current_time, int service_time);
+	Car PayRoutes::Car_Generator(int current_time, int exit_time);
 
 	void PayRoutes::routes_pop_check(int given_time);
 
