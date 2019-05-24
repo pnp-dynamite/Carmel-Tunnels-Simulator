@@ -55,18 +55,10 @@ void Route::pop()
 	queue_advance();
 
 }
-//bool Route::car_time_out()
-//{
-//
-//
-//}
 //Function that get Car and index to push and return the next free index
 void Route::push_back(Car& CC,int push_inx)
 {
 	m_queue[push_inx].Assign(CC);
-	//if(full_queue != true)
-		//queue_advance(push_inx);
-
 	m_empty_slots--;
 	full_check();
 	empty_check();
@@ -80,28 +72,18 @@ void Route::queue_advance()
 {
 	int j = 1;
 	for (int i = 0; i < len && j < len; i++, j++)
-	{
 		this->m_queue[i].Assign(this->m_queue[j]);
-	}
 
 	this->m_queue[len - 1].car_delete();
 }
-void Route::full_check()
+void Route::full_check() // Maybe to change to full_flag_updater
 {
 	full_queue = (m_empty_slots == 0 ? true : false);
 }
-void Route::empty_check()
+void Route::empty_check()  // Maybe to change to empty_flag_updater
 {
 	empty_queue = (m_empty_slots == len ? true : false);
 }
 
-//int Route::random_number(int low, int high)
-//{
-//	srand(time(0));
-//	int num;
-//	/* generate secret number between low and high: */
-//	num = rand() % (high - low + 1) + low;
-//	return num;
-//}
 
 

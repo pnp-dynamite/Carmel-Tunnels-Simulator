@@ -26,12 +26,12 @@ Car::Car(int AT, int ET)
 	ID = this->ID_Generator();
 }
 
-
 ////	Destructor 
 Car::~Car()
 {
 	
 }
+
 ////Copy Constructor
 Car::Car(const Car& C)
 {
@@ -53,7 +53,7 @@ void Car::car_delete()
 string Car::Model_Generator()
 {
 	string Model_List[10] = { "Honda", "Mazda", "Toyota", "Suzuki", "Peugeot",
-														"Kia", "Volvo", "Opel", "BMW", "FIAT" };
+												"Kia", "Volvo", "Opel", "BMW", "FIAT" };
 	return Model_List[rand() % 10];
 }
 
@@ -67,28 +67,23 @@ const int Car::get_Car_ID()
 {
 	return ID;
 }
+
 const string Car::get_Car_Model()
 {
 	return Model;
 }
+
 const int Car::get_Car_AT()
 {
 	return Arrival_time;
 }
+
 const int Car::get_Car_ET()
 {
 	return Exit_time;
 }
 
 
-void Car::set_Arrival_time(int AT)
-{
-	Arrival_time = AT;
-}
-void Car::set_exit_time(int ET)
-{
-	Exit_time = ET;
-}
 Car Car::Assign(Car& CC) //TBD change to operator overload =
 {
 	Model = CC.Model;
@@ -96,9 +91,5 @@ Car Car::Assign(Car& CC) //TBD change to operator overload =
 	Arrival_time = CC.Arrival_time;
 	Exit_time = CC.Exit_time;
 	return *this;
-}
-bool Car::car_validation(Car& CCar)
-{
-	return CCar.ID != 0 ? true : false;
 }
 

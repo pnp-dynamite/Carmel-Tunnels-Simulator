@@ -42,14 +42,11 @@ public:
 	// Getters
 	const int Car::get_Car_ID();
 	const string Car::get_Car_Model();
-
 	const int Car::get_Car_AT(); //AT - Arrival Time
 	const int Car::get_Car_ET(); //ET - Exit Time
 
 	//setters
-	void Car::set_Arrival_time(int AT);
-	void Car::set_exit_time(int ET);
 	void Car::car_delete();
 	Car Car::Assign(Car& CC);
-	bool Car::car_validation(Car& CCar);
+
 };

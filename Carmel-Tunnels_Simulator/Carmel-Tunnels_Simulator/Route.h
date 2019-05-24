@@ -6,7 +6,7 @@
 #include "Car.h"
 
 using namespace std;
-#pragma once/////
+#pragma once
 
 #ifdef _DEBUG
 #ifndef DBG_NEW
@@ -22,17 +22,15 @@ private:
 	Car *m_queue;
 
 public:
-	int m_empty_slots = len;
 	// TBD - maybe should be private
+	int m_empty_slots = len;
+	bool empty_queue = true;
+	bool full_queue = false;
+
 	// Globle Routes counter
 	static int routes_counter;
 	static int len;
 
-	bool empty_queue = true;
-	bool full_queue = false;
-
-
-	//static int len, counter;
 	// Constructor
 	Route();
 	//	Destructor 
@@ -40,19 +38,15 @@ public:
 	//Copy Constructor
 	Route(const Route& RR);
 
-	void Route::full_check();
-	void Route::empty_check();
-
-	int Route::get_service_time();
-
-	// the function get the Car enter indnx and return the remming free slots in the queue.
 	void Route::push_back(Car& CC, int push_inx);
-	bool Route::car_time_out();
-	// the function get the Car remoce indnx and return the remming free slots in the queue.
 	void Route::pop();
-
 	void Route::queue_advance(); 
 
+	//Maybe to change to full_flag_updater
+	void Route::full_check();
+	//Maybe to change to empty_flag_updater
+	void Route::empty_check();
+	int Route::get_service_time();
 	Car Route::top();
 	int Route::size();
 

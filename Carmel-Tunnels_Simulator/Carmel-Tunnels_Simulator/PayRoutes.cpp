@@ -8,28 +8,49 @@
 #pragma once
 using namespace std;
 
-//int PayRoutes::car_enter_counter = 0;
-//int PayRoutes::car_left_counter = 0;
-
  //Constructor
 PayRoutes::PayRoutes(int number_of_routes, int algoritem) 
 	: m_num_routes(number_of_routes), m_algorithm(algoritem)
 {
 	m_Routes_array = new Route[m_num_routes];
-
 }
-//
+
 ////	Destructor 
 PayRoutes::~PayRoutes()
 {
 	delete[] m_Routes_array;
 }
 ////Copy Constructor
-//PayRoutes::PayRoutes(const PayRoutes& P)
-//{
-//
-//
-//}
+PayRoutes::PayRoutes(const PayRoutes& P): m_num_routes (P.m_num_routes), m_algorithm(P.m_algorithm)
+{
+	m_Routes_array = new Route[m_num_routes];
+}
+
+void PayRoutes::routes_pop_check(int given_time)
+{
+	for (int i = 0; i < m_num_routes; i++)
+	{
+		if (m_Routes_array[i].top().get_Car_ET() == given_time)
+		{
+			m_Routes_array[i].pop();
+		}
+	}
+}
+
+bool PayRoutes::check_all_empty()
+{
+	int all_empty = 0;
+	for (int i = 0; i < m_num_routes; i++)
+	{
+		m_Routes_array[i].empty_check();
+		m_Routes_array[i].empty_queue == true ? all_empty++ : all_empty--;
+	}
+	if (all_empty == m_num_routes)
+		return true;
+	else
+		return false;
+}
+
 int PayRoutes::algoritem_selector(int selection)
 {
 	while (selection > 4 || selection < 1)
@@ -45,29 +66,9 @@ int PayRoutes::algoritem_selector(int selection)
 		return fastest_algo();
 	case 4:
 		return random_queue_algo();
-	default:
-		break;
 	}
 }
-// Create not full routes array
 
-
-
-
-bool PayRoutes::check_all_empty()
-{
-	int all_empty = 0;
-	//int i;
-	for (int i = 0; i < m_num_routes; i++)
-	{
-		m_Routes_array[i].empty_check();
-		m_Routes_array[i].empty_queue == true ? all_empty++ : all_empty--;
-	}
-	if(all_empty == m_num_routes)
-		return true;
-	else
-		return false;
-}
 int PayRoutes::shortest_algo()
 {
 	int route_lowest_queue = 0;
@@ -173,37 +174,17 @@ int PayRoutes::shortest_algo()
 	delete[] NotFullRoutes;
 	return working_inx;
  }
- // ---------------- OLD --------------////
- //Car PayRoutes::Car_Generator(int current_time, int service_time)
- //{
-	// Car CCar(current_time, current_time + service_time);
-	// return CCar;
- //}
- // ------------------------- NEW ---------- ///
-Car PayRoutes::Car_Generator(int current_time, int exit_time)
-{
-	Car CCar(current_time, exit_time);
-	return CCar;
-}
-//-----------------------------------------------//
-void PayRoutes::routes_pop_check(int given_time)
-{
-	int i;
-	for (i = 0; i < m_num_routes; i++)
-	{
-		if (m_Routes_array[i].top().get_Car_ET() == given_time)
-		{
-			m_Routes_array[i].pop();
-		}
-	}
 
-}
+//Car PayRoutes::Car_Generator(int current_time, int exit_time)
+//{
+//	Car CCar(current_time, exit_time);
+//	return CCar;
+//}
 
-int Simulator(int Sim_total_time, int num_of_routes, int algo) 
+void Simulator(int Sim_total_time, int num_of_routes, int algo) 
 {
 	PayRoutes PP(num_of_routes, algo);
-	Car A_Car;
-	int time_car_generate = 2;// random_number(1, 20);
+	int time_car_generate = random_number(1, 20);
 	int inx;
 	for (int Current_Time = 1; Current_Time < Sim_total_time; Current_Time++)
 	{
@@ -215,37 +196,32 @@ int Simulator(int Sim_total_time, int num_of_routes, int algo)
 				algo == 3 ? (inx = PP.algoritem_selector(PP.m_algorithm)) : (inx = random_number(0, num_of_routes - 1));
 			else
 				inx = PP.algoritem_selector(PP.m_algorithm);
-/* --------------------- OLD ----------------------------------------------------------*/
-   //A_Car = PP.Car_Generator(Current_Time, PP.m_Routes_array[inx].get_service_time());
-/*-------------------------------------------------------------------------------------*/
+
 			if (inx == -1)
 					PP.car_left_counter++;
 			else
 			{
-				// -------------------------------------- NEW 24.5.19 - 13:10 -----------------------------//
 				int E_time;
 				if (PP.m_Routes_array[inx].size() == 0)
 					E_time = Current_Time + PP.m_Routes_array[inx].get_service_time();
 				else
-					E_time = (PP.m_Routes_array[inx].size() * PP.m_Routes_array[inx].get_service_time())
-					+ (PP.m_Routes_array[inx].top().get_Car_ET() - Current_Time);
+				{	  E_time = (PP.m_Routes_array[inx].size() * PP.m_Routes_array[inx].get_service_time())
+						+ (PP.m_Routes_array[inx].top().get_Car_ET() - Current_Time);  }
 
-				A_Car = PP.Car_Generator(Current_Time, E_time);
-				// ---------------------------------------------------------------------------------------//
+				Car A_Car(Current_Time, E_time);
 				PP.m_Routes_array[inx].push_back(A_Car, PP.m_Routes_array[inx].size());
 				PP.car_enter_counter++;
-				}
+			}
 		}
 	}
 
 	cout << "number of car that entered: " << PP.car_enter_counter << endl;
 	cout << "number of car that left: " << PP.car_left_counter << endl;
 	cout << "Car Created time: " << time_car_generate << endl;
+
 	for (int i = 0; i < PP.m_num_routes; i++)
-	{
-		cout << "Service time: " << PP.m_Routes_array[i].get_service_time() << endl;
-	}
-	return 0;
+		cout << "Service time of Route: " << i + 1  << " is:  " << PP.m_Routes_array[i].get_service_time() << endl;
+	 
 }
 
 int random_number(int low, int high)
