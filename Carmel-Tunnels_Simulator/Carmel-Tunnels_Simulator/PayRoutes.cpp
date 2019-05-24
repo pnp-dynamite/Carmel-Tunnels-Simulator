@@ -170,7 +170,7 @@ int PayRoutes::shortest_algo()
 		}
 	}
 	working_inx = NotFullRoutes[random_number(0, Not_Full_queues-1)];
-	//delete[] NotFullRoutes;
+	delete[] NotFullRoutes;
 	return working_inx;
  }
  // ---------------- OLD --------------////
