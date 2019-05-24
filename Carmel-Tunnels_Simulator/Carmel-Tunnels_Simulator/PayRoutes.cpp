@@ -173,13 +173,18 @@ int PayRoutes::shortest_algo()
 	//delete[] NotFullRoutes;
 	return working_inx;
  }
-
-
-Car PayRoutes::Car_Generator(int current_time, int service_time)
-{
-	Car CCar(current_time, current_time + service_time);
-	return CCar;
-}
+ // ---------------- OLD --------------////
+ Car PayRoutes::Car_Generator(int current_time, int service_time)
+ {
+	 Car CCar(current_time, current_time + service_time);
+	 return CCar;
+ }
+ // ------------------------- NEW ---------- ///
+//Car PayRoutes::Car_Generator(int current_time, int exit_time)
+//{
+//	Car CCar(current_time, exit_time);
+//	return CCar;
+//}
 
 void PayRoutes::routes_pop_check(int given_time)
 {
@@ -210,8 +215,17 @@ int Simulator(int Sim_total_time, int num_of_routes, int algo)
 				algo == 3 ? (inx = PP.algoritem_selector(PP.m_algorithm)) : (inx = random_number(0, num_of_routes-1));
 			else
 			inx = PP.algoritem_selector(PP.m_algorithm);
+			// --------------------- OLD --------------------//
+			A_Car = PP.Car_Generator(Current_Time, PP.m_Routes_array[inx].get_service_time());
 
-			A_Car = PP.Car_Generator(Current_Time, PP.m_Routes_array[inx].get_service_time()); 
+// -------------------------------------- NEW -----------------------------//
+			//
+			//int exit_time = PP.m_Routes_array[inx].size() - 1 == 0 ? PP.m_Routes_array[inx].get_service_time() :
+			//	PP.m_Routes_array[inx].top().get_Car_ET() + Current_Time + (PP.m_Routes_array[inx].size() - 1) * PP.m_Routes_array[inx].get_service_time();
+
+
+			//A_Car = PP.Car_Generator(Current_Time, exit_time);
+			//	
 
 			if (inx == -1)
 			{
