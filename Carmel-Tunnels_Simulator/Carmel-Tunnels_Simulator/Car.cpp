@@ -57,39 +57,32 @@ string Car::Model_Generator()
 	return Model_List[rand() % 10];
 }
 
-// Generate random 8Digits ID number
+// Generate random 8 Digits ID number
 int Car::ID_Generator()
 {
 	return (double)rand() / (RAND_MAX + 1) * (99999999 - 10000000) + 10000000;
 }
 
-const int Car::get_Car_ID()
+// Getters //
+int Car::get_Car_ID() const
 {
 	return ID;
 }
 
-const string Car::get_Car_Model()
+string Car::get_Car_Model() const
 {
 	return Model;
 }
 
-const int Car::get_Car_AT()
+int Car::get_Car_AT() const
 {
 	return Arrival_time;
 }
 
-const int Car::get_Car_ET()
+int Car::get_Car_ET() const
 {
 	return Exit_time;
 }
 
 
-Car Car::Assign(Car& CC) //TBD change to operator overload =
-{
-	Model = CC.Model;
-	ID = CC.ID;
-	Arrival_time = CC.Arrival_time;
-	Exit_time = CC.Exit_time;
-	return *this;
-}
 

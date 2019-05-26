@@ -22,11 +22,11 @@ private:
 	Route *m_Routes_array;
 
 public:
-	int car_enter_counter = 0;
-	int car_left_counter = 0;
+	long double car_enter_counter;
+	long double car_left_counter;
 
 	// Constructor
-	PayRoutes(int number_of_routes = 1, int algoritem = 1);
+	PayRoutes::PayRoutes(int number_of_routes, int algoritem, int length);
 	//	Destructor 
 	~PayRoutes();
 	//Copy Constructor
@@ -38,11 +38,10 @@ public:
 	int PayRoutes::fastest_algo();
 	int PayRoutes::random_queue_algo();
 
-	Car PayRoutes::Car_Generator(int current_time, int exit_time);
 	bool PayRoutes::check_all_empty();
 	void PayRoutes::routes_pop_check(int given_time);
 
-	friend void Simulator(int Sim_total_time, int num_of_routes, int algo);
-	friend int random_number(int low, int high);
+	 void PayRoutes::Simulator(int Sim_total_time);
 
 };
+

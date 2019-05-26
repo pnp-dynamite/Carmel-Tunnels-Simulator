@@ -8,15 +8,14 @@
 #pragma once///
 using namespace std;
 
-int Route::len = 5;				// Static Initialization.	
-int Route::routes_counter = 0;
+int Route::len = 1;				// Static Initialization.	
+int Route::routes_counter = 1;
 
 
 // Constructor
-Route::Route() : m_service_time(random_number(5, 20) ), m_empty_slots(len), m_Route_Num(routes_counter)
+Route::Route() : m_service_time(random_number(5, 20) ), m_empty_slots(len), m_Route_Num(routes_counter++)
 {
 	m_queue = new Car[len];
-	routes_counter++;
 }
 
 ////	Destructor 
@@ -29,9 +28,8 @@ Route::Route(const Route& RR): m_service_time(RR.m_service_time)
 {
 	m_queue = new Car[len];
 	for (int i = 0; i < len; i++)
-	{
-		m_queue[i].Assign(RR.m_queue[i]);
-	}
+		m_queue[i] = m_queue[i];
+
 	m_empty_slots = RR.m_empty_slots;
 	m_Route_Num = RR.m_Route_Num;
 }
@@ -45,20 +43,17 @@ Car Route::top()
 }
 void Route::pop() 
 {  
-	//תיעוד בקובץ פרטי המכונית היוצאת
-
-	//m_queue[0].car_delete();
 	top().car_delete();
 	m_empty_slots++;
 	empty_check();
 	full_check();
 	queue_advance();
-
 }
-//Function that get Car and index to push and return the next free index
+
+//Function that get Car and index to push
 void Route::push_back(Car& CC,int push_inx)
 {
-	m_queue[push_inx].Assign(CC);
+	m_queue[push_inx] = CC;
 	m_empty_slots--;
 	full_check();
 	empty_check();
@@ -72,7 +67,7 @@ void Route::queue_advance()
 {
 	int j = 1;
 	for (int i = 0; i < len && j < len; i++, j++)
-		this->m_queue[i].Assign(this->m_queue[j]);
+		this->m_queue[i] = this->m_queue[j];
 
 	this->m_queue[len - 1].car_delete();
 }
@@ -85,5 +80,7 @@ void Route::empty_check()  // Maybe to change to empty_flag_updater
 	empty_queue = (m_empty_slots == len ? true : false);
 }
 
-
-
+ void Route::set_len(int lenght)
+ {
+	 len = lenght;
+}

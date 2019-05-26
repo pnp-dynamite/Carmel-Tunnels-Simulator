@@ -20,10 +20,10 @@ private:
 	int m_Route_Num;
 	const int m_service_time;
 	Car *m_queue;
+	int m_empty_slots = len;
+
 
 public:
-	// TBD - maybe should be private
-	int m_empty_slots = len;
 	bool empty_queue = true;
 	bool full_queue = false;
 
@@ -42,15 +42,11 @@ public:
 	void Route::pop();
 	void Route::queue_advance(); 
 
-	//Maybe to change to full_flag_updater
 	void Route::full_check();
-	//Maybe to change to empty_flag_updater
 	void Route::empty_check();
+
 	int Route::get_service_time();
 	Car Route::top();
 	int Route::size();
-
-	friend int random_number(int low, int high);
-
+	static void Route::set_len(int lenght);
 };
-

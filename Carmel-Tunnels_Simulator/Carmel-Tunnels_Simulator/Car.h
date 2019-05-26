@@ -3,6 +3,7 @@
 #include <ctime>
 #include <string>
 
+#include "ExceptionalFunctions.h"
 
 #pragma once
 using namespace std;
@@ -24,6 +25,7 @@ private:
 
 
 public:
+
 	// Constructor For spacific car
 	Car(string car_model = "",int car_id = 0, int AT = -1, int ET = -1); // fix
 	// Constructor For random car
@@ -39,14 +41,11 @@ public:
 	// Generate random 8digits ID number
 	int Car::ID_Generator();
 
-	// Getters
-	const int Car::get_Car_ID();
-	const string Car::get_Car_Model();
-	const int Car::get_Car_AT(); //AT - Arrival Time
-	const int Car::get_Car_ET(); //ET - Exit Time
-
-	//setters
 	void Car::car_delete();
-	Car Car::Assign(Car& CC);
 
+	// Getters
+	int Car::get_Car_ID() const;
+	string Car::get_Car_Model() const;
+	int Car::get_Car_AT() const; //AT - Arrival Time
+	int Car::get_Car_ET() const; //ET - Exit Time
 };

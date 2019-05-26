@@ -143,12 +143,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Car.h" />
+    <ClInclude Include="ExceptionalFunctions.h" />
     <ClInclude Include="PayRoutes.h" />
     <ClInclude Include="Route.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Car.cpp" />
     <ClCompile Include="PayRoutes.cpp" />
+    <ClCompile Include="ExceptionalFunctions.cpp" />
     <ClCompile Include="Route.cpp" />
     <ClCompile Include="Tester.cpp" />
   </ItemGroup>
