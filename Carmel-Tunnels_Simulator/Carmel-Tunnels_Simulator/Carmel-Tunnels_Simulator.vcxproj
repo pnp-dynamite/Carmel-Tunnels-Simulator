@@ -152,7 +152,7 @@
     <ClCompile Include="PayRoutes.cpp" />
     <ClCompile Include="ExceptionalFunctions.cpp" />
     <ClCompile Include="Route.cpp" />
-    <ClCompile Include="Tester.cpp" />
+    <ClCompile Include="Main Program.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

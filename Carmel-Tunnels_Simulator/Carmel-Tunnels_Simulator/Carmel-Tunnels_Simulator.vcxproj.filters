@@ -38,10 +38,10 @@
     <ClCompile Include="PayRoutes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Tester.cpp">
+    <ClCompile Include="ExceptionalFunctions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ExceptionalFunctions.cpp">
+    <ClCompile Include="Main Program.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
