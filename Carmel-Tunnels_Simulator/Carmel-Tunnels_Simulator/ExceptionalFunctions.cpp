@@ -24,7 +24,7 @@ void Multi_Simulator(int Sim_Loops, int Routes_Len, int Sim_Time)
 {
 	long double AVG = 0, enter = 0, left = 0, Best_AVG = 35;
 	int Best_Routes = 2, Best_Algo = 0;
-	 int x = 0;
+	bool run_once = true;
 	
 	for (int num_routes = 2; num_routes <= 5; num_routes++)
 	{
@@ -39,9 +39,11 @@ void Multi_Simulator(int Sim_Loops, int Routes_Len, int Sim_Time)
 				left += PP.car_left_counter;
 			}
 			AVG = (left / (left + enter)) * 100;
-			if (AVG <= Best_AVG && x == 0)
+
+			// Calling Best AVG Function ... (all below)
+			if (AVG <= Best_AVG && run_once)
 			{
-				x++;
+				run_once = false;
 				Best_AVG = AVG;
 				Best_Routes = num_routes;
 			}
