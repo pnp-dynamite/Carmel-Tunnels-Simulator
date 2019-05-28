@@ -191,7 +191,7 @@ int PayRoutes::shortest_algo()
 // Simulate given Time senario of number of payroutes in a spacific algorithm
 void PayRoutes::Simulator(int Sim_total_time) 
 {
-	int time_car_generate = random_number(1, 20);
+	int time_car_generate = random_number(1, 5);
 	int inx;
 	int Counter = 0;
 

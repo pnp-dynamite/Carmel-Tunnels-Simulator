@@ -22,9 +22,9 @@ int random_number(int low, int high)
 // Runs a simulation of a range of Pay routes for a given time for each simulation and the number of each simulator
 void Multi_Simulator(int Sim_Loops, int Routes_Len, int Sim_Time)
 {
-	long double AVG = 0, enter = 0, left = 0, Best_AVG = 0;
-	int Best_Routes = 0, Best_Algo = 0;
-	bool Opti_Stop = true;
+	long double AVG = 0, enter = 0, left = 0, Best_AVG = 35;
+	int Best_Routes = 2, Best_Algo = 0;
+	 int x = 0;
 	
 	for (int num_routes = 2; num_routes <= 5; num_routes++)
 	{
@@ -39,15 +39,17 @@ void Multi_Simulator(int Sim_Loops, int Routes_Len, int Sim_Time)
 				left += PP.car_left_counter;
 			}
 			AVG = (left / (left + enter)) * 100;
-			if (Opti_Stop)
+			if (AVG <= Best_AVG && x == 0)
 			{
-				if (AVG <= 35)
-				{
-					Best_AVG = AVG;
-					Best_Routes = num_routes;
-					Best_Algo = algo;
-					Opti_Stop = false;
-				}
+				x++;
+				Best_AVG = AVG;
+				Best_Routes = num_routes;
+			}
+			if (AVG <= Best_AVG && num_routes == Best_Routes)
+			{
+				Best_Algo = algo;
+				Best_AVG = AVG;
+				Best_Routes = num_routes;
 			}
 			Result_Printer(num_routes, algo, AVG);
 		}
