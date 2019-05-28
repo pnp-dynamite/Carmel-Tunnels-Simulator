@@ -4,6 +4,9 @@
 
 #include "Route.h"
 
+#define Min_Car_Arrival_Time 1
+#define Max_Car_Arrival_Time 5
+
 #pragma once
 using namespace std;
 

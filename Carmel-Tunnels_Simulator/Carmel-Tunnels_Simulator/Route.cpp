@@ -13,7 +13,7 @@ int Route::routes_counter = 1;
 
 
 // Constructor
-Route::Route() : m_service_time(random_number(5, 20) ), m_empty_slots(len), m_Route_Num(routes_counter++)
+Route::Route() : m_service_time(random_number(Min_Route_Service_Time, Max_Route_Service_Time)), m_empty_slots(len), m_Route_Num(routes_counter++)
 {
 	m_queue = new Car[len];
 }

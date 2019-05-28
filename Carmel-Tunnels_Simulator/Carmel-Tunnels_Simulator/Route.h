@@ -5,6 +5,9 @@
 
 #include "Car.h"
 
+#define Min_Route_Service_Time 5
+#define Max_Route_Service_Time 20
+
 using namespace std;
 #pragma once
 
